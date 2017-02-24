@@ -1,0 +1,16 @@
+MVC
+schéma DB
+schéma fichiers
+git
+4 personnes
+------> jusqu'à mercredi inclus
+produits ---> libre + catégories (1 étage)
+recherche(ajax)
+panier(ajax)
+admin
+--- commandes
+--- stocks
+--- ajouter/modifier/supprimer des produits
+--- ajouter/modifier/supprimer des catégories
+
+bonus --- zone de commentaire + note + stats
