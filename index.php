@@ -28,10 +28,10 @@ require('models/Exceptions.class.php');
 
 require('models/User.class.php');
 require('models/Comment.class.php');
-require('models/Article.class.php');
+require('models/Product.class.php');
 require('models/UserManager.class.php');
 require('models/CommentManager.class.php');
-require('models/ArticleManager.class.php');
+require('models/ProductManager.class.php');
 
 require('apps/traitement_users.php');
 require('apps/traitement_articles.php');
