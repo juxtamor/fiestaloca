@@ -18,8 +18,8 @@ $errors=[];
 // }
 $db = mysqli_connect("192.168.1.79","fiestaloca","fiestaloca","fiestaloca"); //URL, Utilisateur, MdP, Base de données//
 session_start();// http://php.net/manual/fr/function.session-start.php
-$access = ["articles", "login", "register", "create_article", "edit_article", "article"];
-$page = "products";
+$access = ["articles", "login", "register", "create_article", "edit_article", "article", "accueil"];
+$page = "accueil";
 if (isset($_GET['page']) && in_array($_GET['page'], $access))
 {
     $page = $_GET['page'];
