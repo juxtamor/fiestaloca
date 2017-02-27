@@ -2,21 +2,23 @@
 		<nav class="header-nav">
 			<div class="container">
 				<div class="header-nav-logo">
-					<a href=""><img src="public/images/fiesta-logo.png"></a>
+					<a href="index.php"><img src="public/images/fiesta-logo.png"></a>
 				</div>
 				<nav class="header-nav-menu">
 					<ul class="list-inline sousmenu">
-						<li><a href="">Produits</a>
+						<li><a href="index.php?page=products">Produits</a>
 							<ul>
-								<li><a href="#">Chapeaux</a></li>
-								<li><a href="#">Poncho</a></li>
-								<li><a href="#">Accessoire</a></li>
+								<li><a href="index.php?page=products">Chapeaux</a></li>
+								<li><a href="index.php?page=products">Poncho</a></li>
+								<li><a href="index.php?page=products">Accessoire</a></li>
 							</ul>
 						</li>
-						<li><a href="">Recherche</a></li>
+						<li><a href="index.php?page=products">Recherche</a></li>
 						
-						<li><a href="" class="header-nav-menu-login"><?php htmlentities($_SESSION['login'])?></a></li>
-						<li><a href="">Logout</a></li>
+						<li><a href="index.php?page=login" class="header-nav-menu-login"><?php htmlentities($_SESSION['login'])?></a></li>
+						<li><a href="index.php?page=logout">Logout</a></li>
+						<li><a href="index.php?page=command"><i class="fa fa-cart-arrow-down"></i>
+						</a></li>
 
 					</ul>
 				</nav>
@@ -24,6 +26,15 @@
 		</nav>
 
 		<div class="header-title text-center text-capitalize">
-			<h1>Find your dream home<span>Appartments - Houses - Mansions</span></h1>
+			<h1>Ola Chicka<span>Pancho - Chapeaux - Accessoires</span></h1>
 		</div>
 	</header>
+
+	<div class="search">
+		<div class="container">
+			<form action="">
+				<input type="text" name="s" class="search-field" placeholder="What are you looking for ?">
+				<button class="search-button"><i class="fa fa-search"></i></button>
+			</form>
+		</div>
+	</div>
