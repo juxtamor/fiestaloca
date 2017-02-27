@@ -16,7 +16,7 @@ $errors=[];
 // {
 // $errors[] = $exception->getMessage();
 // }
-$db = mysqli_connect("localhost","root","troiswa","blog"); //URL, Utilisateur, MdP, Base de données//
+$db = mysqli_connect("192.168.1.255","root","troiswa","fiestaloca"); //URL, Utilisateur, MdP, Base de données//
 session_start();// http://php.net/manual/fr/function.session-start.php
 $access = ["articles", "login", "register", "create_article", "edit_article", "article"];
 $page = "articles";
