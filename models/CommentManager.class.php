@@ -8,6 +8,14 @@ class CommentManager
 		$this->db = $db;
 	}
 
+	public function findById($id)
+	{
+		$id = intval($id);
+		$res = mysqli_query($this->db, "SELECT * FROM comments WHERE id='".$id."' LIMIT 1");
+		$comment = mysqli_fetch_object($res, "Comment",[$this->db]);
+		return $comment;
+	}
+
 	public function findByProd(Product $prod)
 	{
 		$id_prod = intval($prod->getId());
@@ -18,14 +26,6 @@ class CommentManager
 			$list[] = $comment;
 		}
 		return $list;
-	}
-
-	public function findById($id)
-	{
-		$id = intval($id);
-		$res = mysqli_query($this->db, "SELECT * FROM comments WHERE id='".$id."' LIMIT 1");
-		$comment = mysqli_fetch_object($res, "Comment",[$this->db]);
-		return $comment;
 	}
 
 	public function save(Comment $comment)
