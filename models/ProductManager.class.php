@@ -69,18 +69,18 @@ class ProductManager
 	public function create($prod_name)
 	{
 		$errors = [];
-		$objproduct = new Product($this->db);
-		$error = $objproduct->setProdName($prod_name);// return
+		$product = new Product($this->db);
+		$error = $product->setProdName($prod_name);// return
 		if ($error)
 		{
 			$errors[] = $error;
 		}
-		$error = $objproduct->setProduct($product);
+		$error = $product->setProduct($product);
 		if ($error)
 		{
 			$errors[] = $error;
 		}
-		$error = $objproduct->setProduct($product);
+		$error = $product->setProduct($product);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -90,10 +90,10 @@ class ProductManager
 			throw new Exceptions($errors);
 		}
 
-		$product = mysqli_real_escape_string($this->db, $objproduct->getProduct());
-		$prod_name = mysqli_real_escape_string($this->db, $objproduct->getProdName());
-		$id_category = intval($objproduct->getCategory()->getId());
-		$res =mysqli_query($this->db, "INSERT INTO products (prod_name, prod_desc, price, image, stock, id_category, product) VALUES('".$prod_name."', '".$id_desc."', '".$price."' , '".$image."','".$stock."','".$id_category"','".$pro_cover"')");
+		$product = mysqli_real_escape_string($this->db, $product->getProduct());
+		$prod_name = mysqli_real_escape_string($this->db, $product->getProdName());
+		$id_category = intval($product->getCategory()->getId());
+		$res =mysqli_query($this->db, "INSERT INTO products (prod_name, prod_desc, price, image, stock, id_category, prod_cover) VALUES('".$prod_name."', '".$prod_desc."', '".$price."' , '".$image."','".$stock."','".$id_category."','".$prod_cover."')");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
