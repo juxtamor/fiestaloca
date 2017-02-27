@@ -1,0 +1,9 @@
+<article class="article-center">
+	
+	<a href="index.php?page=article&id=<?=$article->getId()?>">
+		<h3><?=htmlentities($article->getTitle())?></h3>
+	</a>
+	<p><?=htmlentities($article->getArticle())?></p>
+	<div class="art_date">Posté le : <?=$article->getDate()?></div>
+	<div class="art_author">Par : <?=htmlentities($article->getAuthor()->getLogin())?></div>
+</article>
