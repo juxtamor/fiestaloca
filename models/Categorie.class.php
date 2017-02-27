@@ -1,110 +1,75 @@
 <?php
-class User
+class Categorie
 {
 	// liste des propriétés -> privées
-	private $id;
-	private $login;
-	private $password;
-	private $user_email;
-	private $birthdate;
-	private $admin;
 
+	//PROPRIETES STOCKEES
+	private $id;
+	private $cat_name;
+	private $cat_desc;
+
+
+	//PROPRIETES CALCULEE
+	private $product;
+
+
+	//PROPRIETE TRANSMISE
+	private $db;
+
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
+
+
+	// GET
 	public function getId()
 	{
 		return $this->id;
 	}
 
-	public function getLogin()
+	public function getCatName()
 	{
-		return $this->login;
+		return $this->cat_name;
 	}
-	public function setLogin($login)
+
+	public function getCatDesc()
 	{
-		if (strlen($login) > 31)
-		{
-			return "Login trop long (> 31)";
-		}
-		else if (strlen($login) < 3)
-		{
-			return "Login trop court (< 3)";
-		}
-		else
-		{
-			$this->login = $login;
-		}
+		return $this->cat_desc;
 	}
 
 
-	public function getPassword()
+	// SET
+	public function setCatName($cat_name)
 	{
-		return $this->password;
-	}
-	public function setPassword($password)
-	{
-		if (strlen($password) > 31)
+		if (strlen($cat_name) > 31)
 		{
-			return "Mot de passe trop long (> 71)";
+			return "Catégorie trop long (> 31)";
 		}
-		else if (strlen($password) < 3)
+		else if (strlen($cat_name) < 3)
 		{
-			return "Mot de passe trop court (< 8)";
+			return "Catégorie trop court (< 3)";
 		}
 		else
 		{
-			$this->password = $password;
+			$this->cat_name = $cat_name;
 		}
 	}
 
-	public function getUserEmail()
+	public function setCatDesc($cat_desc)
 	{
-		return $this->user_email;
-	}
-	public function setUserEmail($user_email)
-	{
-		if (filter_var($user_email, FILTER_VALIDATE_EMAIL) == true)
+		if (strlen($cat_desc) > 4095)
 		{
-			$this->user_email = $user_email;
+			return "Description trop long (> 4095)";
+		}
+		else if (strlen($cat_desc) < 3)
+		{
+			return "Description trop court (< 8)";
 		}
 		else
 		{
-			return "Email non valide";
+			$this->cat_desc = $cat_desc;
 		}
 	}
-
-	public function getBirthdate()
-	{
-		return $this->birthdate;
-	}
-	public function setBirthdate($birthdate)
-	{
-		var_dump($birthdate);
-		// $birthdate => 2017-02-22
-		// explode / implode
-		// string => array / array => string
-		$tab = explode('-', $birthdate);
-		// ["2017", "02", "22"]
-		$month = $tab[1];
-		$day = $tab[2];
-		$year = $tab[0];
-		// http://php.net/manual/fr/function.checkdate.php
-		if (checkdate($month, $day, $year) == true)
-		{
-			$this->birthdate = $birthdate;
-		}
-	}
-
-	public function isAdmin()
-	{
-		return $this->admin;
-	}
-	public function setAdmin($admin)
-	{
-		if (is_bool($admin))
-		$this->admin;
-	}
-
-
-
-
 }
 ?>
