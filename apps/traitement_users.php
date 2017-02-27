@@ -16,13 +16,13 @@ if (isset($_POST['action']))
 	$action = $_POST['action'];
 	if ($action == "register")
 	{
-		if (isset($_POST['login'], $_POST['password1'], $_POST['password2'], $_POST['birthdate'], $_POST['user_email']))
+		if (isset($_POST['login'], $_POST['password1'], $_POST['password2'], $_POST['email'],$_POST['adress'], $_POST['birthdate']))
 		{
 			// Etape 2 : Validation des données
 		$manager = new UserManager($db);
 		try
 		{
-		$user = $manager->create($_POST['login'], $_POST['password1'], $_POST['password2'], $_POST['birthdate'], $_POST['user_email']);
+		$user = $manager->create($_POST['login'], $_POST['password1'], $_POST['password2'], $_POST['email'],$_POST['adress'], $_POST['birthdate']);
 		if ($user)
 			{
 				// Etape 4
