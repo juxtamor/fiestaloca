@@ -5,7 +5,8 @@ class User
 	private $id;
 	private $login;
 	private $password;
-	private $user_email;
+	private $email;
+	private $adress;
 	private $birthdate;
 	private $admin;
 
@@ -55,19 +56,39 @@ class User
 		}
 	}
 
-	public function getUserEmail()
+	public function getEmail()
 	{
-		return $this->user_email;
+		return $this->email;
 	}
-	public function setUserEmail($user_email)
+	public function setEmail($email)
 	{
-		if (filter_var($user_email, FILTER_VALIDATE_EMAIL) == true)
+		if (filter_var($email, FILTER_VALIDATE_EMAIL) == true)
 		{
-			$this->user_email = $user_email;
+			$this->email = $email;
 		}
 		else
 		{
 			return "Email non valide";
+		}
+	}
+
+	public function getAdress()
+	{
+		return $this->adress;
+	}
+	public function setAdress($adress)
+	{
+		if (strlen($adress) > 511)
+		{
+			return "Adress trop long (> 71)";
+		}
+		else if (strlen($adress) < 3)
+		{
+			return "Adress trop courte (< 8)";
+		}
+		else
+		{
+			return "Adress non valide";
 		}
 	}
 
@@ -77,7 +98,6 @@ class User
 	}
 	public function setBirthdate($birthdate)
 	{
-		var_dump($birthdate);
 		// $birthdate => 2017-02-22
 		// explode / implode
 		// string => array / array => string
