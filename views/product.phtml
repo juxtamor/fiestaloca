@@ -1,0 +1,17 @@
+<hr>
+<article class="product-center">
+	<h3><?=htmlentities($product->getTitle())?></h3>
+	<p><?=htmlentities($product->getProduct())?></p>
+	<div class="prod_date">Posté le : <?=htmlentities($product->getDate())?></div>
+	<div class="prod_author">De : <?=htmlentities($product->getProduct()->getLogin())?></div>
+	<div class="prod_price">De : <?=htmlentities($product->getPrice()?></div>
+	<div class="prod_image"><?=htmlentities($product->getImage())?></div>
+	<div class="prod_stock">En stock <?=htmlentities($product->getStock())?></div>
+
+</article>
+<?php
+require('apps/comments.php');
+require('apps/create_comment.php');
+require('apps/del_comment.php');
+?>
+
