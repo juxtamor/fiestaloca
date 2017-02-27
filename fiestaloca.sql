@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 27 Février 2017 à 09:32
+-- Généré le: Lun 27 Février 2017 à 09:58
 -- Version du serveur: 5.5.53-0ubuntu0.14.04.1
 -- Version de PHP: 5.5.9-1ubuntu4.20
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `command` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `status` varchar(127) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `id_user` int(10) unsigned NOT NULL,
-  `total_price` int(11) NOT NULL,
+  `total_price` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `content` varchar(4095) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `id_author` int(10) unsigned NOT NULL,
   `id_prod` int(10) unsigned NOT NULL,
-  `note` int(11) NOT NULL,
+  `note` smallint(6) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_author` (`id_author`),
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `prod_name` varchar(31) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `prod_desc` varchar(4095) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` float NOT NULL,
   `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `stock` int(11) NOT NULL,
   `id_category` int(10) unsigned NOT NULL,
