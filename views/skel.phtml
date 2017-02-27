@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
 
-	<link rel="stylesheet" href="public/styles/bootstrap.min.css">
-	<link rel="stylesheet" href="public/styles/font-awesome.min.css">
-	<link rel="stylesheet" href="public/styles/fonts.css">
-	<link rel="stylesheet/less" href="public/styles/style.less">
-	<script src="public/scripts/less.js"></script>
-	<script src="public/scripts/jquery.min.js"></script>
-	<script src="public/scripts/bootstrap.min.js"></script>
-</head>
-<body>
-		<?php require('apps/header.php'); ?>
-		<?php require('apps/container.php'); ?>
-		<?php require('apps/footer.php'); ?>
-	<script>
-		$(window).scroll(function() {
-			var srtop = $("body").scrollTop();
-			$(".header-nav").css("background-color","rgba(178,27,36,1"+(srtop/800+0.2)+")");
-		});
-	</script>
-</body>
+		<link rel="stylesheet" href="public/styles/bootstrap.min.css">
+		<link rel="stylesheet" href="public/styles/font-awesome.min.css">
+		<link rel="stylesheet" href="public/styles/fonts.css">
+		<link rel="stylesheet/less" href="public/styles/style.less">
+		<script src="public/scripts/less.js"></script>
+		<script src="public/scripts/jquery.min.js"></script>
+		<script src="public/scripts/bootstrap.min.js"></script>
+	</head>
+	<body>
+			<?php require('apps/header.php'); ?>
+			<?php require('apps/container.php'); ?>
+			<?php require('apps/footer.php'); ?>
+		<script>
+			$(window).scroll(function() {
+				var srtop = $("body").scrollTop();
+				$(".header-nav").css("background-color","rgba(178,27,36,1"+(srtop/800+0.2)+")");
+			});
+		</script>
+	</body>
 </html>
