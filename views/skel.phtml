@@ -13,15 +13,13 @@
 	<script src="public/scripts/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container">
 		<?php require('apps/header.php'); ?>
 		<?php require('apps/container.php'); ?>
 		<?php require('apps/footer.php'); ?>
-	</div>
 	<script>
 		$(window).scroll(function() {
 			var srtop = $("body").scrollTop();
-			$(".header-nav").css("background-color","rgba(28,54,85,"+(srtop/800+0.2)+")");
+			$(".header-nav").css("background-color","rgba(178,27,36,1"+(srtop/800+0.2)+")");
 		});
 	</script>
 </body>
