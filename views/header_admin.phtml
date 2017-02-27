@@ -1,22 +1,29 @@
-<header><h1>HEADER en H1 !</h1>
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="index.php">LOGO</a>
-	    </div>
-	    <ul class="nav navbar-nav">
-	      <li><a href="?page=articles">Articles</a></li>
-	      <li><a href="?page=create_article">Rédiger un article</a></li>
-	      <li><?php htmlentities($_SESSION['login'])?></li>
-	    </ul>
-	    <ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?=htmlentities($_SESSION['login'])?> <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="index.php?page=logout">Logout</a></li>
+<header class="header">
+		<nav class="header-nav">
+			<div class="container">
+				<div class="header-nav-logo">
+					<a href=""><img src="images/fiesta-logo.png"></a>
+				</div>
+				<nav class="header-nav-menu">
+					<ul class="list-inline">
+						<li><a href="">Produits</a>
+							<ul>
+								<li><a href="#">Chapeaux</a></li>
+								<li><a href="#">Poncho</a></li>
+								<li><a href="#">Accessoire</a></li>
+							</ul>
+						</li>
+						<li><a href="">Recherche</a></li>
+						
+						<li><a href="" class="header-nav-menu-login"><?php htmlentities($_SESSION['login'])?></a></li>
+						<li><a href="">Logout</a></li>
+
 					</ul>
-				</li>
-			</ul>
-	  </div>
-	</nav>
-</header>
+				</nav>
+			</div>
+		</nav>
+
+		<div class="header-title text-center text-capitalize">
+			<h1>Find your dream home<span>Appartments - Houses - Mansions</span></h1>
+		</div>
+	</header>
