@@ -34,7 +34,7 @@ require('models/CommentManager.class.php');
 require('models/ProductManager.class.php');
 
 require('apps/traitement_users.php');
-require('apps/traitement_articles.php');
+require('apps/traitement_products.php');
 require('apps/traitement_comments.php');
 
 require('apps/skel.php');
