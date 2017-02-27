@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>MVC Exemple 1</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-	<link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css">	
-	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<title>Document</title>
 
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/font-awesome.min.css">
+	<link rel="stylesheet" href="styles/fonts.css">
+	<link rel="stylesheet/less" href="styles/style.less">
+	<script src="scripts/less.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -16,7 +18,11 @@
 		<?php require('apps/container.php'); ?>
 		<?php require('apps/footer.php'); ?>
 	</div>
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script>
+		$(window).scroll(function() {
+			var srtop = $("body").scrollTop();
+			$(".header-nav").css("background-color","rgba(28,54,85,"+(srtop/800+0.2)+")");
+		});
+	</script>
 </body>
 </html>

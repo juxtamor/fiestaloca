@@ -1,1 +1,60 @@
 <footer><small>FOOTER</small></footer>
+
+
+
+<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<ul class="list-unstyled">
+						<li><a href="">About</a></li>
+						<li><a href="">Support</a></li>
+						<li><a href="">Contact</a></li>
+						<li><a href="">Terms</a></li>
+						<li><a href="">Policy</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<ul class="list-unstyled">
+						<li><a href="">Appartements</a></li>
+						<li><a href="">Houses</a></li>
+						<li><a href="">Villas</a></li>
+						<li><a href="">Mansions</a></li>
+						<li><a href="">...</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<ul class="list-unstyled">
+						<li><a href="">New York</a></li>
+						<li><a href="">Los Angeles</a></li>
+						<li><a href="">Miami</a></li>
+						<li><a href="">Washington</a></li>
+						<li><a href="">...</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<p>La Casa is real estate minimal html5 web-site template, designed and coded by pixel-hint, tellus varius, dictum erat vel, maximus tellus. Sed vitae auctor ipsum.</p>
+
+					<ul class="footer-social list-inline">
+						<li><a href=""><i class="fa fa-facebook"></i></a></li>
+						<li><a href=""><i class="fa fa-twitter"></i></a></li>
+						<li><a href=""><i class="fa fa-git"></i></a></li>
+						<li><a href=""><i class="fa fa-skype"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="footer-copyright">
+				<div class="text-center">Copyright &copy; 2015 Pixelhint.com. All Rights Reserved</div>
+			</div>
+		</div>
+	</footer>
+	
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+	<script>
+		$(window).scroll(function() {
+			var srtop = $("body").scrollTop();
+			$(".header-nav").css("background-color","rgba(28,54,85,"+(srtop/800+0.2)+")");
+		});
+	</script>
