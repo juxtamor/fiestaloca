@@ -1,0 +1,10 @@
+<div class="comment">
+	<form method="post">
+		<div class="form-saut">
+			<label for="message">Votre message : </label>
+			<textarea id="message" placeholder="Votre commentaire..." name="comment"></textarea>
+			<button type="button" class="btn btn-outline-primary">Envoyer</button>
+			<input type="hidden" name="id_article" value="<?=$article->getId()?>">
+		</div>
+	</form>
+</div>
