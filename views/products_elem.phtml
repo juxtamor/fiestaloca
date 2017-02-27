@@ -1,4 +1,4 @@
-<article class="article-center">
+<!-- <article class="article-center">
 	
 	<a href="index.php?page=article&id=<?=$article->getId()?>">
 		<h3><?=htmlentities($article->getTitle())?></h3>
@@ -6,4 +6,30 @@
 	<p><?=htmlentities($article->getArticle())?></p>
 	<div class="art_date">Posté le : <?=$article->getDate()?></div>
 	<div class="art_author">Par : <?=htmlentities($article->getAuthor()->getLogin())?></div>
-</article>
+</article> -->
+
+
+	<main class="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-sm-6">
+					<article class="post">
+						<figure class="post-thumbnail">
+							<a href="#">
+								<img src="./images/property-1.jpg" alt="">
+								<div class="post-price"><span>$2500</span></div>
+							</a>
+						</figure>
+						<div class="post-content">
+							<h2 class="post-content-title">Fuisque dictum tortor at purus libero</h2>
+							<div class="post-content-excerpt">2 kitchens, 2 beds, 2 bath... <span>(288ftsq)</span></div>
+						</div>
+					</article>
+				</div>
+			</div>
+
+			<div class="text-center">
+				<a href="" class="button-radius">View more listings</a>
+			</div>
+		</div>
+	</main>
