@@ -72,7 +72,7 @@ a, a:hover{
 .header{
 	height: 100%;
 
-	background: url(../public/images/fond1.jpg) no-repeat bottom center fixed;
+	background: url(../images/fond.jpg) no-repeat bottom center fixed;
 	background-size: cover;
 
 	&-nav{
@@ -84,7 +84,7 @@ a, a:hover{
 		left: 0;
 		z-index: 20;
 
-		background: rgba(28, 54, 85, .1);
+		background: rgba(178, 27, 36,1);
 
 		a{
 			color: #fff;
@@ -133,35 +133,36 @@ a, a:hover{
 	.header-nav-menu ul li {
 		display:inline-block;
 		position: relative;
-}
+	}
 
-.header-nav-menu ul li ul {
-		display: none;
-		text-align: left;
-		position:absolute;
-		top: 100%;
-		left: 0;
-		border: 1px solid #BD4D62;
-}
+	.header-nav-menu ul li ul {
+			display: none;
+			text-align: left;
+			position:absolute;
+			top: 100%;
+			left: 0;
+			border: 1px solid #BD4D62;
+	}
 
-.header-nav-menu ul li:hover > ul {
- 		display:block;
- }
+	.header-nav-menu ul li:hover > ul {
+	 		display:block;
+	 }
 
-.header-nav-menu ul ul li{
-	display: block;
-}
-.header-nav-menu ul ul ul{
-	top: 0;
-	left: 50%; 
-}
+	.header-nav-menu ul ul li{
+		display: block;
+	}
+	.header-nav-menu ul ul ul{
+		top: 0;
+		left: 50%; 
+	}
 
-.header-nav-menu ul li.sous-menu > a:after{
-	content: "↓";
-	position: relative;
-	top: -3px;
-	left: 5px;
-}
+	.header-nav-menu ul li.sous-menu > a:after{
+		content: "↓";
+		position: relative;
+		top: -3px;
+		left: 5px;
+	}
+
 	&-title{
 		position: absolute;
 		top: 50%;
