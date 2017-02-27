@@ -1,16 +1,3 @@
-<div>CONTAINER</div>
-<?php
-require("apps/errors.php");
-require('apps/'.$page.'.php');
-// require('apps/register.php');
-// require('apps/login.php');
-// require('apps/create_article.php');
-// require('apps/article.php');
-// require('apps/articles.php');
-// require('apps/edit_article.php');
-?>
-
-
 	<main class="main">
 		<div class="container">
 			<div class="row">
@@ -145,5 +132,9 @@ require('apps/'.$page.'.php');
 			<div class="text-center">
 				<a href="" class="button-radius">View more listings</a>
 			</div>
+			<?php
+			require("apps/errors.php");
+			require('apps/'.$page.'.php');
+			?>
 		</div>
 	</main>
