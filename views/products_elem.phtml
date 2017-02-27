@@ -1,7 +1,7 @@
 <!-- <article class="article-center">
 	
-	<a href="index.php?page=article&id=<?=$article->getId()?>">
-		<h3><?=htmlentities($article->getTitle())?></h3>
+	<a href="index.php?page=product&id=<?=$product->getId()?>">
+		<h3><?=htmlentities($product->getProdName())?></h3>
 	</a>
 	<p><?=htmlentities($article->getArticle())?></p>
 	<div class="art_date">Posté le : <?=$article->getDate()?></div>
@@ -17,12 +17,12 @@
 						<figure class="post-thumbnail">
 							<a href="#">
 								<img src="./images/property-1.jpg" alt="">
-								<div class="post-price"><span>$2500</span></div>
+								<div class="post-price"><span><?=htmlentities($product->getPrice())?>€</span></div>
 							</a>
 						</figure>
 						<div class="post-content">
-							<h2 class="post-content-title">Fuisque dictum tortor at purus libero</h2>
-							<div class="post-content-excerpt">2 kitchens, 2 beds, 2 bath... <span>(288ftsq)</span></div>
+							<h2 class="post-content-title"><<?=htmlentities($prod_name->getProdName())?></h2>
+							<div class="post-content-excerpt"><?=htmlentities($product->getProdDesc())?></div>
 						</div>
 					</article>
 				</div>
