@@ -30,7 +30,7 @@ class ProductManager
 		return $product;
 	}
 
-	public function findByIdCategory($id_category)
+	public function findByCategory($id_category)
 	{
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\ SECURITE
 		$id_author = mysqli_real_escape_string($this->db, $id_category);
@@ -46,9 +46,9 @@ class ProductManager
 	{
 		$id = intval($product->getId());
 		//			
-		$prod_name = mysqli_real_escape_string($this->db, $product->getProduct());
-		$prod_desc = mysqli_real_escape_string($this->db, $product->getProduct());
-		$id_category = intval($product->getIdCategory()->getId());
+		$prod_name = mysqli_real_escape_string($this->db, $product->getProdName());
+		$prod_desc = mysqli_real_escape_string($this->db, $product->getProdDesc());
+		$id_category = intval($this->db, $product->getIdCategory()());
 		mysqli_query($this->db, "UPDATE products SET prod_name='".$prod_name."', product='".$product."', id_category='".$id_category."' WHERE id='".$id."'LIMIT 1");
 		if (!$res)
 		{
@@ -75,12 +75,27 @@ class ProductManager
 		{
 			$errors[] = $error;
 		}
-		$error = $product->setProduct($product);
+		$error = $product->setProdDesc($prod_desc);
 		if ($error)
 		{
 			$errors[] = $error;
 		}
-		$error = $product->setProduct($product);
+		$error = $product->setPrice($price);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+		$error = $product->setImage($image);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+		$error = $product->setStock($stock);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+		$error = $product->setCategory($category);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -92,7 +107,10 @@ class ProductManager
 
 		$product = mysqli_real_escape_string($this->db, $product->getProduct());
 		$prod_name = mysqli_real_escape_string($this->db, $product->getProdName());
-		$id_category = intval($product->getCategory()->getId());
+		$prod_desc = mysqli_real_escape_string($this->db, $product->getProdName());
+		$category = mysqli_real_escape_string($this->db, $product->getCategory());
+		$prod_cover = mysqli_real_escape_string($this->db, $product->getProdCover());
+		// $id_category = intval($product->getCategory()->getId());
 		$res =mysqli_query($this->db, "INSERT INTO products (prod_name, prod_desc, price, image, stock, id_category, prod_cover) VALUES('".$prod_name."', '".$prod_desc."', '".$price."' , '".$image."','".$stock."','".$id_category."','".$prod_cover."')");
 		if (!$res)
 		{
