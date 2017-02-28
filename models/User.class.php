@@ -1,6 +1,13 @@
 <?php
 class User
 {
+
+	private $db;
+
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
 	// liste des propriétés -> privées
 	private $id;
 	private $login;
