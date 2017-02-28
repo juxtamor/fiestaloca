@@ -14,7 +14,7 @@ class UserManager
 	{
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM users ORDER BY login");
-		while ($user = mysqli_fetch_object($res, "User", [$this->db])
+		while ($user = mysqli_fetch_object($res, "User", [$this->db]))
 		{
 			$list[] = $user;
 		}
