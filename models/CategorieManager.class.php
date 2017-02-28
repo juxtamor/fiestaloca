@@ -27,7 +27,7 @@ class CategorieManager
 		$id = intval($id);
 		// /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM categorie WHERE id='".$id."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "Categorie", [$this->db]);
+		$categorie = mysqli_fetch_object($res, "Categorie", [$this->db]);
 		return $categorie;
 	}
 
