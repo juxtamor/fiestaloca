@@ -48,7 +48,7 @@ class ProductManager
 		//			
 		$prod_name = mysqli_real_escape_string($this->db, $product->getProdName());
 		$prod_desc = mysqli_real_escape_string($this->db, $product->getProdDesc());
-		$id_category = intval($this->db, $product->getIdCategory()());
+		$id_category = intval($this->db, $product->getIdCategory());
 		mysqli_query($this->db, "UPDATE products SET prod_name='".$prod_name."', product='".$product."', id_category='".$id_category."' WHERE id='".$id."'LIMIT 1");
 		if (!$res)
 		{
