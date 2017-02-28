@@ -4,13 +4,13 @@
 				<div class="col-lg-4 col-sm-6">
 					<article class="post">
 						<figure class="post-thumbnail">
-							<a href="#">
-								<img src="./images/property-1.jpg" alt="">
+							<a href="index.php?page=product&id=<?=$product->getId()?>"><?=htmlentities($product->getProdName())?>
+								<img src="<?=htmlentities($product->getImage())?>" alt="">
 								<div class="post-price"><span><?=htmlentities($product->getPrice())?>€</span></div>
 							</a>
 						</figure>
 						<div class="post-content">
-							<h2 class="post-content-title"><?=htmlentities($prod_name->getProdName())?></h2>
+							<h2 class="post-content-title"><?=htmlentities($product->getProdName())?></h2>
 							<div class="post-content-excerpt"><?=htmlentities($product->getProdDesc())?></div>
 						</div>
 					</article>
