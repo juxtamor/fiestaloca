@@ -1,15 +1,30 @@
 <div class="container">
 	<h1><?=htmlentities($_SESSION['login'])?> </h1>
 	<div class="profil">
-	<ul>
-			
-		<li><a href="">Modifier votre profil</a></li>
-		<li><a href="">Modifier l'adresse</a></li>
-		<li><a href="">Ajouter une nouvelle adresse</a></li>
-		<li><a href="">Modifier le mot de passe</a></li>
-		<li><a href="">Modifier l'identifiant</a></li>
+	  <div>
+        	<label for="psw">Modifier l'identifiant:</label>
+        	<input type="text" name="identifiant" placeholder="identifiant">
+        	<button>Valider</button>
+        </div>
 
-		</ul>
+         <div>
+        	<label for="psw">Modifier le mot de passe</label>
+        	<input type="new mdp" name="new mdp" placeholder="Mot de passe">
+        	<button>Valider</button>
+        </div>
+
+         <div>
+        	<label for="psw">Modifier l'adresse</label>
+        	<input type="modifadress" name="modifadress" placeholder="Adresse">
+        	<button>Valider</button>
+        </div>
+
+         <div>
+        	<label for="psw">Ajouter une nouvelle adresse:</label>
+        	<input type="newad" name="newad" placeholder="new adresse">
+        	<button>Valider</button>
+        </div>
+
 	</div>
 
 	<div class="lastcommand">
