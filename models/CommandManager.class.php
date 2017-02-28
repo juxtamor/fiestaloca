@@ -30,13 +30,13 @@ class CommandManager
 		return $command;
 	}
 
-	public function findByIdUser($id_user)
+	public function findByUser($id_user)
 	{
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\ SECURITE
 		$id_user = mysqli_real_escape_string($this->db, $id_user);
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM command WHERE id_user='".$id_user."' LIMIT 1");
-		$command = mysqli_fetch_object($res, "Article", [$this->db]);
+		$command = mysqli_fetch_object($res, "Command", [$this->db]);
 		return $command;
 		
 	}
@@ -48,7 +48,7 @@ class CommandManager
 		//			
 		$status = mysqli_real_escape_string($this->db, $command->getStatus());
 		$total_price = intval($command->getTotalPrice());
-		$user= intval($this->db, $command->getUser());
+		$id_user= intval($this->db, $command->getUser());
 		mysqli_query($this->db, "UPDATE command SET ='".$status."', id_user='".$id_user."',total_price='".$total_price"' WHERE id='".$id."'LIMIT 1");
 		if (!$res)
 		{
@@ -75,7 +75,7 @@ class CommandManager
 		{
 			$errors[] = $error;
 		}
-		$error = $command->setStatus($);
+		$error = $command->setStatus($status);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -93,7 +93,7 @@ class CommandManager
 		
 		$status = mysqli_real_escape_string($this->db, $command->getStatus());
 		$total_price = intval($command->getTotalPrice());
-		$user= intval($this->db, $command->getUser());
+		$user= intval($this->db, $command->getUser()->getId());
 		$res =mysqli_query($this->db, "INSERT INTO command (status, id_user, total_price) VALUES('".$status."', '".$id_user."', '".$total_price."')");
 		if (!$res)
 		{
