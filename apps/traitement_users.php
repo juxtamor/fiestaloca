@@ -59,7 +59,7 @@ if (isset($_POST['action']))
 						$_SESSION['login'] = $user->getLogin();
 						$_SESSION['admin'] = $user->isAdmin();
 						// Etape 4
-						header('Location: index.php?page=articles');
+						header('Location: index.php');
 						exit;
 					}
 					else
