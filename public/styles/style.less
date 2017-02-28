@@ -56,15 +56,15 @@ a, a:hover{
 	padding: 10px 25px;
 	margin: 40px 0;
 
-	color: @blue;
+	color: #B21B24;
 	text-transform: uppercase;
 
-	border: 1px solid @blue;
+	border: 1px solid #B21B24;
 	border-radius: 30px;
 
 	&:hover{
-		border-color: darken(@blue, 20%);
-		color: darken(@blue, 20%);
+		border-color: darken(#B21B24, 20%);
+		color: darken(#B21B24, 20%);
 	}
 }
 
@@ -251,6 +251,7 @@ a, a:hover{
 	margin-top: 100px;
 	margin-bottom: 40px;
 	padding: 10px 250px;
+	color: white;
 	display: inline-block;
 }
 /*LOGIN*/
@@ -275,6 +276,8 @@ button{
 
 	&-thumbnail{
 		position: relative;
+		max-height: 300px;
+		overflow: hidden;
 	}
 
 	&-price{
@@ -284,7 +287,7 @@ button{
 
 		padding: 10px 15px;
 
-		background: #FFF;
+		background: #FFF, 0.1; 
 		border-radius: 3px;
 
 		&:before{
@@ -299,7 +302,7 @@ button{
 			top: 0;
 			z-index: 0;
 			
-			background: @blue;
+			background: #B21B24;
 			border-radius: 3px;
 			transition: all .3s ease-in;
 		}
