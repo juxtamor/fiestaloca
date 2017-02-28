@@ -24,6 +24,10 @@ body{
 img{
 	max-width: 100%;
 }
+
+.desc_main p{
+	font-size: 20px;
+}
 .header-nav-logo img{
 	display: block;
 	width: 120px;
@@ -36,7 +40,7 @@ a, a:hover{
 }
 
 /* customisation du place holder : /!\ ça ne marche pas sur les anciens navigateurs */
-::-webkit-input-placeholder{
+/*::-webkit-input-placeholder{
 	color: @blue;
 }
 ::-moz-placeholder{
@@ -47,7 +51,7 @@ a, a:hover{
 }
 :-moz-placeholder {
   color: @blue;
-}
+}*/
 
 /* bouton avec bordure et arrondi */
 .button-radius{
@@ -250,7 +254,10 @@ a, a:hover{
 
 button{
 	background-color: #DD8E10;
-
+	border: none;
+	font-size: 20px; 
+	color: white;
+	margin-top: 15px;
 }
 
 /* EACH POST*/
@@ -349,9 +356,11 @@ button{
 	color: #fff;
 	padding: 30px 0 0;
 	line-height: 30px;
+	text-align: center;
 
 	a{
 		color: #fff;
+		padding: 10px;
 	}
 
 	&-copyright{
