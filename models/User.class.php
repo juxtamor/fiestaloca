@@ -44,11 +44,11 @@ class User
 	{
 		if (strlen($password) > 31)
 		{
-			return "Mot de passe trop long (> 71)";
+			return "Mot de passe trop long (> 31)";
 		}
 		else if (strlen($password) < 3)
 		{
-			return "Mot de passe trop court (< 8)";
+			return "Mot de passe trop court (<3)";
 		}
 		else
 		{
@@ -78,17 +78,18 @@ class User
 	}
 	public function setAdress($adress)
 	{
+		
 		if (strlen($adress) > 511)
 		{
-			return "Adress trop long (> 71)";
+			return "Adress trop long (> 511)";
 		}
 		else if (strlen($adress) < 3)
 		{
-			return "Adress trop courte (< 8)";
+			return "Adress trop courte (< 3)";
 		}
-		else
-		{
-			return "Adress non valide";
+		
+		else{
+			$this->adress = $adress;
 		}
 	}
 
@@ -98,6 +99,10 @@ class User
 	}
 	public function setBirthdate($birthdate)
 	{
+		if($birthdate!=true)
+		{
+			return "date non valide";
+		}
 		// $birthdate => 2017-02-22
 		// explode / implode
 		// string => array / array => string
@@ -110,6 +115,10 @@ class User
 		if (checkdate($month, $day, $year) == true)
 		{
 			$this->birthdate = $birthdate;
+		}
+		else
+		{
+			return "date de naissance non valide";
 		}
 	}
 
