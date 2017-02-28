@@ -9,7 +9,7 @@ class Product
 	private $image;
 	private $stock;
 	private $prod_cover;
-	private $id_category
+	private $id_category;
 	private $category;
 
 	//PROPRIETE TRANSMISE
