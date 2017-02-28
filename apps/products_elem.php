@@ -4,9 +4,9 @@
 // 	require('views/articles_elem.phtml');
 // }
 $count = 0;
-while ($count<count($list))
+while ($count < count($list))
 {
-	$article=$list[$count];
+	$product = $list[$count];
 	require('views/products_elem.phtml');
 	$count++;
 }
