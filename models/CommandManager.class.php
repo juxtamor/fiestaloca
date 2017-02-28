@@ -1,5 +1,5 @@
 <?php
-class UserManager
+class CommandManager
 {
 	private $db;
 
@@ -13,10 +13,10 @@ class UserManager
 	public function findAll()
 	{
 		$list = [];
-		$res = mysqli_query($this->db, "SELECT * FROM users ORDER BY login");
-		while ($user = mysqli_fetch_object($res, "User"))
+		$res = mysqli_query($this->db, "SELECT * FROM command ORDER BY id");
+		while ($command = mysqli_fetch_object($res, "Command", [$this->db]))
 		{
-			$list[] = $user;
+			$list[] = $command;
 		}
 		return $list;
 	}
@@ -25,33 +25,31 @@ class UserManager
 		// /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 		$id = intval($id);
 		// /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
-		$res = mysqli_query($this->db, "SELECT * FROM users WHERE id='".$id."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User"); // $user = new User();
-		return $user;
+		$res = mysqli_query($this->db, "SELECT * FROM command WHERE id='".$id."' LIMIT 1");
+		$command = mysqli_fetch_object($res, "Command", [$this->db]); // $command = new Article();
+		return $command;
 	}
 
-	public function findByLogin($login)
+	public function findByIdUser($id_user)
 	{
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\ SECURITE
-		$login = mysqli_real_escape_string($this->db, $login);
+		$id_user = mysqli_real_escape_string($this->db, $id_user);
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
-		$res = mysqli_query($this->db, "SELECT * FROM users WHERE login='".$login."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User");
-		return $user;
+		$res = mysqli_query($this->db, "SELECT * FROM command WHERE id_user='".$id_user."' LIMIT 1");
+		$command = mysqli_fetch_object($res, "Article", [$this->db]);
+		return $command;
 		
 	}
 	
 	// UPDATE
-	public function save(User $user)
+	public function save(Command $command)
 	{
-		$id = intval($user->getId());
+		$id = intval($command->getId());
 		//			
-		$user_email = mysqli_real_escape_string($this->db, $user->getUserEmail());
-		$password = mysqli_real_escape_string($this->db, $user->getPassword());
-		$login = mysqli_real_escape_string($this->db, $user->getLogin());
-		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
-		$admin = mysqli_real_escape_string($this->db, $user->getAdmin());
-		mysqli_query($this->db, "UPDATE users SET user_email='".$user_email."', password='".$password."', login='".$login."', birthdate='".$birthdate."', admin='".$admin."' WHERE id='".$id."'LIMIT 1");
+		$status = mysqli_real_escape_string($this->db, $command->getStatus());
+		$total_price = intval($command->getTotalPrice());
+		$user= intval($this->db, $command->getUser());
+		mysqli_query($this->db, "UPDATE command SET ='".$status."', id_user='".$id_user."',total_price='".$total_price"' WHERE id='".$id."'LIMIT 1");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
@@ -60,34 +58,29 @@ class UserManager
 	}
 	
 	// DELETE
-	public function remove(User $user)
+	public function remove(Command $command)
 	{
-		$id = intval($user->getId());
-		mysqli_query($this->db, "DELETE from users WHERE id='".$id."' LIMIT 1");
-		return $user;
+		$id = intval($command->getId());
+		mysqli_query($this->db, "DELETE from command WHERE id='".$id."' LIMIT 1");
+		return $command;
 	}
 	
 	// INSERT
-	public function create($login, $password1, $password2, $birthdate, $email)
+	public function create($status, $command, User $user)
 	{
 		$errors = [];
-		$user = new User();
-		$error = $user->setLogin($login);// return
+		$command = new Command($this->db);
+		$error = $command->setUser($user);
 		if ($error)
 		{
 			$errors[] = $error;
 		}
-		$error = $user->setPassword($password1);
+		$error = $command->setStatus($);
 		if ($error)
 		{
 			$errors[] = $error;
 		}
-		$error = $user->setBirthdate($birthdate);
-		if ($error)
-		{
-			$errors[] = $error;
-		}
-		$error = $user->setUserEmail($email);
+		$error = $command->setTotalPrice($total_price);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -97,16 +90,16 @@ class UserManager
 			throw new Exceptions($errors);
 		}
 
-		$login = mysqli_real_escape_string($this->db, $user->getLogin());
-		$email = mysqli_real_escape_string($this->db, $user->getUserEmail());
-		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
-		$hash = password_hash($password1, PASSWORD_BCRYPT, ["cost"=>11]);
-		$res = mysqli_query($this->db, "INSERT INTO users (user_email, password, login, birthdate) VALUES('".$email."', '".$hash."', '".$login."', '".$birthdate."')");
+		
+		$status = mysqli_real_escape_string($this->db, $command->getStatus());
+		$total_price = intval($command->getTotalPrice());
+		$user= intval($this->db, $command->getUser());
+		$res =mysqli_query($this->db, "INSERT INTO command (status, id_user, total_price) VALUES('".$status."', '".$id_user."', '".$total_price."')");
 		if (!$res)
 		{
-			throw new Exceptions(["Erreur interne", mysqli_error($this->db)]);
+			throw new Exceptions(["Erreur interne"]);
 		}
-		$id = mysqli_insert_id($this->db);// last_insert_id
+		$id = mysqli_insert_id($this->db);
 		return $this->findById($id);
 	}
 }
