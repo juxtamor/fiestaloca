@@ -81,11 +81,11 @@ class User
 		
 		if (strlen($adress) > 511)
 		{
-			return "Adress trop long (> 71)";
+			return "Adress trop long (> 511)";
 		}
 		else if (strlen($adress) < 3)
 		{
-			return "Adress trop courte (< 8)";
+			return "Adress trop courte (< 3)";
 		}
 		
 		else{
@@ -115,6 +115,10 @@ class User
 		if (checkdate($month, $day, $year) == true)
 		{
 			$this->birthdate = $birthdate;
+		}
+		else
+		{
+			return "date de naissance non valide";
 		}
 	}
 
