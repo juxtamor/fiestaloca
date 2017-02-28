@@ -13,7 +13,7 @@ class ProductManager
 	public function findAll()
 	{
 		$list = [];
-		$res = mysqli_query($this->db, "SELECT * FROM products ORDER BY date DESC");
+		$res = mysqli_query($this->db, "SELECT * FROM products ORDER BY prod_name");
 		while ($product = mysqli_fetch_object($res, "Product", [$this->db]))
 		{
 			$list[] = $product;
@@ -30,15 +30,19 @@ class ProductManager
 		return $product;
 	}
 
-	public function findByCategory($id_category)
+	public function findByCategory(Category $category)
 	{
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\ SECURITE
-		$id_author = mysqli_real_escape_string($this->db, $id_category);
+		$id_category = intval($product-> getId());
+		$list = [];
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM products WHERE id_category='".$id_category."' LIMIT 1");
-		$product = mysqli_fetch_object($res, "Products", [$this->db]);
-		return $product;
-		
+		while($product = mysqli_fetch_object($res, "Product", [$this->db]))
+		{
+			$list[] = $product;
+		}
+		return $list;
+
 	}
 	
 	// UPDATE
