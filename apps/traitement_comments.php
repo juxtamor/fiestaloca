@@ -17,7 +17,7 @@ if (isset($_POST['comment'], $_POST['id_prod'], $_SESSION['id']))
 		if ($comment)
 		{
 			// Etape 4
-			header('Location: index.php?page=article&id='.$comment->getProd()->getId());
+			header('Location: index.php?page=product&id='.$comment->getProd()->getId());
 			exit;
 		}
 		else

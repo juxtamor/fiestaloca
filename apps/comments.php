@@ -1,5 +1,5 @@
 <?php
-$list = $article->getComments();
+$list = $product->getComments();
 // $res = mysqli_query($db, "SELECT comments.*, users.login FROM comments, users WHERE users.id=comments.id_author AND comments.id_article=".$article['id']);
 // while ($comment = mysqli_fetch_assoc($res))
 // {
