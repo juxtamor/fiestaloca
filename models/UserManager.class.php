@@ -14,7 +14,7 @@ class UserManager
 	{
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM users ORDER BY login");
-		while ($user = mysqli_fetch_object($res, "User"))
+		while ($user = mysqli_fetch_object($res, "User",$this->db))
 		{
 			$list[] = $user;
 		}
@@ -26,7 +26,7 @@ class UserManager
 		$id = intval($id);
 		// /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE id='".$id."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User"); // $user = new User();
+		$user = mysqli_fetch_object($res, "User",$this->db); // $user = new User();
 		return $user;
 	}
 
@@ -36,7 +36,7 @@ class UserManager
 		$login = mysqli_real_escape_string($this->db, $login);
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE login='".$login."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User");
+		$user = mysqli_fetch_object($res, "User", $this->db);
 		return $user;
 		
 	}
@@ -51,7 +51,7 @@ class UserManager
 		$email = mysqli_real_escape_string($this->db, $user->getEmail());
 		$adress = mysqli_real_escape_string($this->db, $user->getAdress());
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
-		$admin = mysqli_real_escape_string($this->db, $user->getAdmin());
+		$admin = mysqli_real_escape_string($this->db, $user->isAdmin());
 		mysqli_query($this->db, "UPDATE users SET login='".$login."', password='".$password."', email='".$email."', adress='".$adress."', birthdate='".$birthdate."', admin='".$admin."' WHERE id='".$id."'LIMIT 1");
 		if (!$res)
 		{
@@ -72,7 +72,7 @@ class UserManager
 	public function create($login, $password1, $password2, $email, $adress, $birthdate )
 	{
 		$errors = [];
-		$user = new User();
+		$user = new User($this ->db);
 		$error = $user->setLogin($login);// return
 		if ($error)
 		{
