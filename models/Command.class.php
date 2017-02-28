@@ -48,9 +48,16 @@ class Command
 	{
 		return $this->total_price;
 	}
-	public function setTotalPrice(Product $price)
+	public function setTotalPrice($total_price)
 	{
-		$this->total_price = $total_price;
+		if ($total_price<0)
+		{
+			return "Le prix ne peut pas être négatif";
+		}
+		else
+		{
+			$this->total_price = $total_price;
+		}
 	}
 
 }
