@@ -10,7 +10,10 @@ class Product
 	private $stock;
 	private $prod_cover;
 	private $id_category;
+	
+
 	private $category;
+	private $comments;
 
 	//PROPRIETE TRANSMISE
 	private $db;
@@ -76,6 +79,10 @@ class Product
 		if ($price < 0)
 		{
 			return "Le prix ne peut être negatif";
+		}
+	else
+		{
+			$this->price = $price;
 		}
 	}
 
