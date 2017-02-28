@@ -33,7 +33,7 @@ class ProductManager
 	public function findByCategory(Category $category)
 	{
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\ SECURITE
-		$id_category = intval($product-> getId());
+		$id_category = intval($category-> getId());
 		$list = [];
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM products WHERE id_category='".$id_category."' LIMIT 1");
@@ -42,7 +42,6 @@ class ProductManager
 			$list[] = $product;
 		}
 		return $list;
-
 	}
 	
 	// UPDATE
@@ -52,7 +51,7 @@ class ProductManager
 		//			
 		$prod_name = mysqli_real_escape_string($this->db, $product->getProdName());
 		$prod_desc = mysqli_real_escape_string($this->db, $product->getProdDesc());
-		$id_category = intval($this->db, $product->getIdCategory());
+		$id_category = intval($this->db, $category->getId());
 		mysqli_query($this->db, "UPDATE products SET prod_name='".$prod_name."', product='".$product."', id_category='".$id_category."' WHERE id='".$id."'LIMIT 1");
 		if (!$res)
 		{
@@ -70,7 +69,7 @@ class ProductManager
 	}
 	
 	// INSERT
-	public function create($prod_name)
+	public function create($prod_name, $prod_desc, $price, $image, $stock, Categorie $category)
 	{
 		$errors = [];
 		$product = new Product($this->db);
@@ -109,10 +108,10 @@ class ProductManager
 			throw new Exceptions($errors);
 		}
 
-		$product = mysqli_real_escape_string($this->db, $product->getProduct());
+		// $product = mysqli_real_escape_string($this->db, $product->getProduct());
 		$prod_name = mysqli_real_escape_string($this->db, $product->getProdName());
 		$prod_desc = mysqli_real_escape_string($this->db, $product->getProdName());
-		$category = mysqli_real_escape_string($this->db, $product->getCategory());
+		$id_category = mysqli_real_escape_string($this->db, $product->getCategory()->getId());
 		$prod_cover = mysqli_real_escape_string($this->db, $product->getProdCover());
 		// $id_category = intval($product->getCategory()->getId());
 		$res =mysqli_query($this->db, "INSERT INTO products (prod_name, prod_desc, price, image, stock, id_category, prod_cover) VALUES('".$prod_name."', '".$prod_desc."', '".$price."' , '".$image."','".$stock."','".$id_category."','".$prod_cover."')");

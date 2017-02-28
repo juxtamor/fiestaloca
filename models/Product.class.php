@@ -32,6 +32,10 @@ class Product
 	{
 		return $this->prod_name;
 	}
+	public function getProdCover()
+	{
+		return $this->prod_cover;
+	}
 	public function setProdName($prod_name)
 	{
 		if (strlen($prod_name) > 31)
@@ -162,11 +166,11 @@ class Product
 
 	public function getCategory()
 	{
-		$manager = new CategoryManager($this->db);
+		$manager = new CategorieManager($this->db);
 		$this->category = $manager->findById($this->id_category);
 		return $this->category;
 	}
-	public function setCategory(Category $category)
+	public function setCategory(Categorie $category)
 	{
 		// $this->id_category = $id_category;
 		$this->category = $category;
