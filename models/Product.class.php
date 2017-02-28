@@ -77,7 +77,6 @@ class Product
 		{
 			return "Le prix ne peut être negatif";
 		}
-		return	$this->price = $price;
 	}
 
 	public function getImage()
@@ -86,13 +85,17 @@ class Product
 	}
 	public function setImage($image)
 	{
-		if (filter_var($image) > 255)
+		if (strlen($image)<10)
 		{
-			return "Contenu trop long (> 255)";
+			return "L'url de l'image est trop court (<10)";
 		}
-		else if (filter_var($image) < 10)
+		else if (strlen($image)>511)
 		{
-			return "Contenu trop court (< 10)";
+			return "L'url de l'image est trop long (>255)";
+		}
+		else if (filter_var($image, FILTER_VALIDATE_URL) == false) 
+		{
+			return "L'url n'est pas valide";
 		}
 		else
 		{
@@ -119,9 +122,17 @@ class Product
 
 	public function setProdCover($prod_cover)
 	{
-		if (filter_var($prod_cover) > 255)
+		if (strlen($prod_cover)<10)
 		{
-			return "URL trop long (> 255)";
+			return "L'url de l'image est trop court (<10)";
+		}
+		else if (strlen($prod_cover)>255)
+		{
+			return "L'url de l'image est trop long (>255)";
+		}
+		else if (filter_var($prod_cover, FILTER_VALIDATE_URL) == false) 
+		{
+			return "L'url n'est pas valide";
 		}
 		else
 		{
