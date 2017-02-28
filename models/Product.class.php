@@ -9,8 +9,8 @@ class Product
 	private $image;
 	private $stock;
 	private $prod_cover;
-	//PROPRIETES CALCULEE
-	private $id_category;
+	private $id_category
+	private $category;
 
 	//PROPRIETE TRANSMISE
 	private $db;
@@ -49,21 +49,21 @@ class Product
 
 	public function getProdDesc()
 	{
-		return $this->product;
+		return $this->prod_desc;
 	}
-	public function setProduct($product)
+	public function setProdDesc($prod_desc)
 	{
-		if (strlen($product) > 4095)
+		if (strlen($prod_desc) > 4095)
 		{
 			return "Contenu trop long (> 4095)";
 		}
-		else if (strlen($product) < 65)
+		else if (strlen($prod_desc) < 65)
 		{
 			return "Contenu trop court (< 65)";
 		}
 		else
 		{
-			$this->product = $product;
+			$this->prod_desc = $prod_desc;
 		}
 	}
 
@@ -73,6 +73,10 @@ class Product
 	}
 	public function setPrice($price)
 	{	
+		if ($price < 0)
+		{
+			return "Le prix ne peut être negatif";
+		}
 		return	$this->price = $price;
 	}
 
@@ -82,11 +86,11 @@ class Product
 	}
 	public function setImage($image)
 	{
-		if (strlen($image) > 255)
+		if (filter_var($image) > 255)
 		{
 			return "Contenu trop long (> 255)";
 		}
-		else if (strlen($image) < 10)
+		else if (filter_var($image) < 10)
 		{
 			return "Contenu trop court (< 10)";
 		}
@@ -102,14 +106,11 @@ class Product
 	}
 	public function setStock($stock)
 	{
-		if (strlen($stock) > 255)
+		if (strlen($stock) < 0)
 		{
-			return "Contenu trop long (> 255)";
+			return "Le stock ne peut pas être negatif";
 		}
-		else if (strlen($stock) < 10)
-		{
-			return "Contenu trop court (< 10)";
-		}
+		
 		else
 		{
 			$this->stock = $stock;
@@ -118,13 +119,9 @@ class Product
 
 	public function setProdCover($prod_cover)
 	{
-		if (strlen($prod_cover) > 255)
+		if (filter_var($prod_cover) > 255)
 		{
-			return "Contenu trop long (> 255)";
-		}
-		else if (strlen($prod_cover) < 10)
-		{
-			return "Contenu trop court (< 10)";
+			return "URL trop long (> 255)";
 		}
 		else
 		{
@@ -136,7 +133,7 @@ class Product
 	{
 		$manager = new CommentManager($this->db);
 		$this->comments = $manager->findByProduct($this);
-		return $this->comment;// null
+		return $this->comments;// null
 	}
 
 	public function getDate()
@@ -145,16 +142,17 @@ class Product
 	}
 
 
-	public function getIdCategory()
+	public function getCategory()
 	{
 		$manager = new CategoryManager($this->db);
 		$this->category = $manager->findById($this->id_category);
 		return $this->category;
 	}
-	public function setIdCategory(Category $id_category)
+	public function setCategory(Category $category)
 	{
 		// $this->id_category = $id_category;
-		$this->id_author = $id_category->getId();
+		$this->category = $category;
+		$this->id_category = $category->getId();
 	}
 }
 ?>
