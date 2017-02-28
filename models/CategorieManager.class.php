@@ -14,7 +14,7 @@ class CategorieManager
 	{
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM categorie ORDER BY login");
-		while ($categorie = mysqli_fetch_object($res, "Categorie"))
+		while ($categorie = mysqli_fetch_object($res, "Categorie", [$this->db]))
 		{
 			$list[] = $categorie;
 		}
@@ -27,7 +27,7 @@ class CategorieManager
 		$id = intval($id);
 		// /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM categorie WHERE id='".$id."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "Categorie");
+		$user = mysqli_fetch_object($res, "Categorie", [$this->db]);
 		return $categorie;
 	}
 
@@ -61,7 +61,7 @@ class CategorieManager
 	public function create($cat_name, $cat_desc)
 	{
 		$errors = [];
-		$categorie = new Categorie();
+		$categorie = new Categorie($this->db);
 		$error = $categorie->setCatName($cat_name);
 		if ($error)
 		{

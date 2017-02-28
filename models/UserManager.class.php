@@ -14,7 +14,7 @@ class UserManager
 	{
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM users ORDER BY login");
-		while ($user = mysqli_fetch_object($res, "User",$this->db))
+		while ($user = mysqli_fetch_object($res, "User", [$this->db]))
 		{
 			$list[] = $user;
 		}
@@ -26,7 +26,7 @@ class UserManager
 		$id = intval($id);
 		// /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE id='".$id."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User",$this->db); // $user = new User();
+		$user = mysqli_fetch_object($res, "User", [$this->db]); // $user = new User();
 		return $user;
 	}
 
@@ -36,7 +36,7 @@ class UserManager
 		$login = mysqli_real_escape_string($this->db, $login);
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE login='".$login."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User", $this->db);
+		$user = mysqli_fetch_object($res, "User", [$this->db]);
 		return $user;
 		
 	}
