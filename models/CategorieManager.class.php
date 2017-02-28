@@ -61,7 +61,7 @@ class CategorieManager
 	public function create($cat_name, $cat_desc)
 	{
 		$errors = [];
-		$categorie = new Categorie();
+		$categorie = new Categorie($this->db);
 		$error = $categorie->setCatName($cat_name);
 		if ($error)
 		{
