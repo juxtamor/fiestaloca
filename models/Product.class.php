@@ -154,7 +154,7 @@ class Product
 	public function getComments()
 	{
 		$manager = new CommentManager($this->db);
-		$this->comments = $manager->findByProduct($this);
+		$this->comments = $manager->findByProd($this);
 		return $this->comments;// null
 	}
 
