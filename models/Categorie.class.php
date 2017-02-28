@@ -10,7 +10,7 @@ class Categorie
 
 
 	//PROPRIETES CALCULEE
-	private $product;
+	private $products;
 
 
 	//PROPRIETE TRANSMISE
@@ -36,6 +36,10 @@ class Categorie
 	public function getCatDesc()
 	{
 		return $this->cat_desc;
+	}
+	public function getProducts()
+	{
+		return $this->products;
 	}
 
 
