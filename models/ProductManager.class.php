@@ -41,13 +41,13 @@ class ProductManager
 		return $product;
 	}
 
-	public function findByCategory(Category $category)
+	public function findByCategory(Categorie $category)
 	{
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\ SECURITE
 		$id_category = intval($category-> getId());
 		$list = [];
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
-		$res = mysqli_query($this->db, "SELECT * FROM products WHERE id_category='".$id_category."' LIMIT 1");
+		$res = mysqli_query($this->db, "SELECT * FROM products WHERE id_category='".$id_category."'");
 		while($product = mysqli_fetch_object($res, "Product", [$this->db]))
 		{
 			$list[] = $product;
