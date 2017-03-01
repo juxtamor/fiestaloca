@@ -1,36 +1,92 @@
 
 <?php
-// var_dump($_POST);
-if (isset($_POST['status'], $_POST['status'], $_SESSION['id'], $_POST['total_price']))
+if (isset($_POST['action']))
 {
-	// Etape 2
-	$userManager = new UserManager($db);
-	$author = $userManager->findById($_SESSION['id']);
-
-	$productManager = new ProductManager($db);
-	$command = $commandManager->findById($_POST['id_article']);
-	
-	$manager = new CommentManager($db);
-	try
-	{
-		// Etape 3
-		//  public function create($comment, $id_author, $id_article) -> CommentManager.class.php ligne 59
-		// 	$comment = $manager->create($_POST['comment'], $_SESSION['id'], $_POST['id_article']);
-		$comment = $manager->create($_POST['comment'], $author, $article);
-		if ($comment)
-		{
-			// Etape 4
-			header('Location: index.php?page=article&id='.$comment->getArticle()->getId());
-			exit;
-		}
-		else
-		{
-			$errors[] = "Erreur interne";
-		}
-	}
-	catch (Exceptions $e)
-	{
-		$errors = $e->getErrors();
-	}
+        $action = $_POST['action'];
+        if ($action == "add")
+        {
+                if (isset($_SESSION['id'], $_POST['id_products']))// $_POST['quantity']
+                {
+                        $manager = new CommandManager($db);
+                        $userManager = new UserManager($db);
+                        $productManager = new ProductManager($db);
+                        $product = $productManager->findById($_POST['id_products']);
+                        $user = $userManager->findById($_SESSION['id']);
+                        $cart = $user->getCart();
+                        try
+                        {
+                                if (!$cart)
+                                {
+                                        $cart = $manager->create($user);
+                                }
+                                $cart->addProduct($product);
+                                $manager->save($cart);
+                                header('Location: index.php?page=cart');
+                                exit;
+                        }
+                        catch (Exceptions $e)
+                        {
+                                $errors = $e->getErrors();
+                        }
+                }
+        }
+        if ($action == "create")
+        {
+                // Etape 1
+                if (isset($_SESSION['id']))
+                {
+                        // Etape 2
+                        $manager = new CommandManager($db);
+                        $userManager = new UserManager($db);
+                        $user = $userManager->findById($_SESSION['id']);
+                        try
+                        {
+                                $command = $manager->create($user);
+                                if ($command)
+                                {
+                                        header('Location: index.php?page=cart');
+                                        exit;
+                                }
+                                else
+                                {
+                                        $errors[] = "Erreur interne";
+                                }        
+                        }
+                        catch (Exceptions $e)
+                        {
+                                $errors = $e->getErrors();
+                        }
+                }
+        }
+        if ($action == "modify")
+        {
+                // Etape 1
+                if (isset($_POST['id_command'],$_POST['id_products']))
+                {
+                        // Etape 2
+                        $manager = new CommandManager($db);
+                        $productManager = new ProductManager($db);
+                        $userManager = new UserManager($db);
+                        $user = $userManager->findById($_SESSION['id']);
+                        try
+                        {
+                                $command = $manager->modify($user);
+                                if ($command)
+                                {
+                                        header('Location: index.php?page=cart');
+                                        exit;
+                                }
+                                else
+                                {
+                                        $errors[] = "Erreur interne";
+                                }        
+                        }
+                        catch (Exceptions $e)
+                        {
+                                $errors = $e->getErrors();
+                        }
+                }
+        }
+        
 }
 ?>
