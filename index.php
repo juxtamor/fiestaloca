@@ -18,7 +18,7 @@ $errors=[];
 // }
 $db = mysqli_connect("192.168.1.79","fiestaloca","fiestaloca","fiestaloca"); //URL, Utilisateur, MdP, Base de données//
 session_start();// http://php.net/manual/fr/function.session-start.php
-$access = ["products", "login", "register", "create_product", "edit_product", "product", "accueil","profil","cart", "create_categorie", "categorie", "cart"];
+$access = ["products", "login", "register", "create_product", "edit_product", "product", "accueil","profil","cart", "create_categorie", "categorie"];
 $page = "accueil";
 if (isset($_GET['page']) && in_array($_GET['page'], $access))
 {
@@ -38,6 +38,7 @@ require('models/CategorieManager.class.php');
 require('apps/traitement_users.php');
 require('apps/traitement_products.php');
 require('apps/traitement_comments.php');
+require('apps/traitement_categorie.php');
 
 require('apps/skel.php');
 
