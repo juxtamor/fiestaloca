@@ -3,30 +3,37 @@
         <h2>S'enregistrer</h2>
         <form method="post">
             <input type="hidden" name="action" value="register">
+            
             <div>
                 <label for="nom">Login :</label>
                 <input type="text" id="nom" name="login" />
             </div>
+            
             <div>
         	   <label for="password">Mot de passe :</label>
         	   <input type="password" name="password1" id="pw">
             </div>
+            
             <div>
                 <label for="password">Confirmer le mot de passe :</label>
                 <input type="password" name="password2" id="pw">
             </div>
+            
             <div>
                 <label for="user_email">Email :</label>
-                <input type="email" name="email">
+                <input id="user_email" type="email" name="email">
             </div>
+            
             <div>
                 <label for="adress">Votre adresse :</label>
                 <input type="text" id="adress" name="adress" />
             </div>
+            
             <div>
                 <label for="datel">Date de naissance :</label>
                 <input type="date" name="birthdate" id="date">
             </div>
+            
             <div class="button"><button>S'inscrire</button></div>
         </form>
     </div>
