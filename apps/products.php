@@ -1,15 +1,10 @@
 <?php
-/*while ($article = mysqli_fetch_assoc($res))
-{
-        require('views/articles_elem.phtml');
-}*/
 if (isset($_GET['id_category']))
 {
-        $categoryManager = new CategoryManager($db);
-        $category = $categoryManager->findById($_GET['id_category']);
+        $categorieManager = new CategorieManager($db);
+        $category = $categorieManager->findById($_GET['id_category']);
         $manager = new ProductManager($db);
         $list = $manager->findByCategory($category);
-
         $count = 0;
         while ($count < count($list))// list.length
         {
@@ -19,5 +14,5 @@ if (isset($_GET['id_category']))
         }
 }
 else
-        echo "taggle";
+        echo "Erreur interne...";
 ?>
