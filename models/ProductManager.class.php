@@ -121,7 +121,7 @@ class ProductManager
 
 		// $product = mysqli_real_escape_string($this->db, $product->getProduct());
 		$prod_name = mysqli_real_escape_string($this->db, $product->getProdName());
-		$prod_desc = mysqli_real_escape_string($this->db, $product->getProdName());
+		$prod_desc = mysqli_real_escape_string($this->db, $product->getProdDesc());
 		$id_category = mysqli_real_escape_string($this->db, $product->getCategory()->getId());
 		$prod_cover = mysqli_real_escape_string($this->db, $product->getProdCover());
 		// $id_category = intval($product->getCategory()->getId());
