@@ -7,6 +7,9 @@
 		<div class="prod_price"><?=htmlentities($product->getPrice())?> €</div>
 		<div class="prod_image"><img src="<?=htmlentities($product->getImage())?>"></div>
 		<div class="prod_stock">En stock <?=htmlentities($product->getStock())?></div>
+		<div class="quantity">
+			<input type="number" name="quantity">
+		</div>
 		<button>Ajouter au panier</button>
 
 	</article>
