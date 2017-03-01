@@ -67,9 +67,9 @@ class Comment
 		{
 			return "Contenu trop court (< 3)";
 		}
-		else if (strlen($content) > 2047)
+		else if (strlen($content) > 4095)
 		{
-			return "Contenu trop long (> 4095)";
+			return "Contenu trop long (>4095)";
 		}
 		else
 		{

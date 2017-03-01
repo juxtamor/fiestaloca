@@ -25,8 +25,10 @@ class Command
 	}
 	public function setStatus($status)
 	{
-		
-			$this->status = $status;
+		if($status="Panier" || $status="Traitement en cours" || $status="Envoyée")
+		{
+				$this->status = $status;
+		}		
 		
 	}
 

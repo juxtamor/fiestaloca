@@ -39,6 +39,9 @@ class Categorie
 	}
 	public function getProducts()
 	{
+		//liste des produits...?
+		$manager = new ProductManager($this->db);
+		$this->products = $manager->findByCategory($this);
 		return $this->products;
 	}
 
