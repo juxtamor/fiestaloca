@@ -1,0 +1,13 @@
+<div class="container">
+	<article class="cat_name">
+
+		<div class="cat_name">Categorie <?=htmlentities($product->getCatName())?></div>
+		<div class="cat_desc">Description : <?=htmlentities($product->getCatDesc()))?></div>
+
+	</article>
+</div>
+<?php
+require('apps/comments.php');
+require('apps/create_comment.php');
+require('apps/del_comment.php');
+?>
