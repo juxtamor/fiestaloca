@@ -9,6 +9,7 @@ class Command
 
 	//PROPRIETES CALCULEE
 	private $user;
+	private $products;
 
 	//PROPRIETE TRANSMISE
 	private $db;
@@ -17,6 +18,24 @@ class Command
 	public function getId()
 	{
 		return $this->id;
+	}
+
+	public function getProducts()
+	{
+		if ($this->products == null)
+		{
+		$manager = new ProductManager($this->db);
+		$this->products = $manager->findByCommand($this);
+		}
+		return $this->products;
+	}
+	public function addProduct(Product $product)
+	{
+		if ($this->products == null)
+		{
+			$this->getProducts();
+		}
+		$this->products[] = $product;	
 	}
 
 	public function getStatus()
@@ -32,19 +51,18 @@ class Command
 		
 	}
 
-
 	public function getUser()
 	{
 		$manager = new UserManager($this->db);
 		$this->user = $manager->findById($this->id_user);
 		return $this->user;
 	}
+
 	public function setUser(User $user)
 	{
 		$this->user = $user;
 		$this->id_user = $user->getId();
 	}
-
 
 	public function getTotalPrice()
 	{

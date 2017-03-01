@@ -45,7 +45,16 @@ class CommandManager
 	public function save(Command $command)
 	{
 		$id = intval($command->getId());
-		//			
+		//		
+		$products = $command->getProducts();
+		mysqli_query($this->db, "DELETE FROM link_command_products WHERE id_command='".$id."'");
+		$count = 0;
+		while ($count < count($products))
+		{
+			mysqli_query($this->db, "INSERT INTO link_command_products (id_command, id_products) VALUES('".$id."', '".$products[$count]->getId()."')");
+			$count++;
+		}
+		//
 		$status = mysqli_real_escape_string($this->db, $command->getStatus());
 		$total_price = intval($command->getTotalPrice());
 		$id_user= intval($this->db, $command->getUser());

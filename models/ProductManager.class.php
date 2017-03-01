@@ -9,6 +9,17 @@ class ProductManager
 	}
 
 	// SELECT
+	public function findByCommand(Command $command)
+	{
+		$id = intval($command->getId());
+		$list = [];
+		$res = mysqli_query($this->db, "SELECT products.* FROM products LEFT JOIN link_command_products ON link_command_products.id_product=products.id WHERE link_command_products.id_product.id_command='".$id."'");
+		while ($product = mysqli_fetch_object($res, "Product", [$this->db]))
+		{
+			$list[] = $product;
+		}
+		return $list;
+	}
 
 	public function findAll()
 	{
