@@ -1,4 +1,6 @@
 <?php
+$manager = new CategorieManager($db);
+$list = $manager->findAll();
 if (isset($_SESSION['id']))
 {
 	if (isset ($_SESSION['admin']) && $_SESSION['admin'] == true)
