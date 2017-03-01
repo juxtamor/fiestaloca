@@ -1,42 +1,38 @@
 <div class="container">
-	<h1><?=htmlentities($_SESSION['login'])?> </h1>
 	<div class="page">
+    <h2><?=htmlentities($_SESSION['login'])?></h2>
         <div>
         	<label for="psw">Modifier l'identifiant:</label>
-        	<input type="text" name="identifiant" placeholder="identifiant">
-        	<button>Valider</button>
+        	<input type="text" name="identifiant" placeholder="Identifiant">
         </div>
+        	<div class="button_2"><button>Valider</button></div>
 
          <div>
-        	<label for="psw">Modifier le mot de passe</label>
+        	<label for="psw">Modifier le mot de passe:</label>
         	<input type="new mdp" name="new mdp" placeholder="Mot de passe">
-        	<button>Valider</button>
         </div>
+        	<div class="button_2"><button>Valider</button></div>
 
          <div>
-        	<label for="psw">Modifier l'adresse</label>
+        	<label for="psw">Modifier l'adresse:</label>
         	<input type="modifadress" name="modifadress" placeholder="Adresse">
-        	<button>Valider</button>
         </div>
+        	<div class="button_2"><button>Valider</button></div>
 
          <div>
         	<label for="psw">Ajouter une nouvelle adresse:</label>
-        	<input type="newad" name="newad" placeholder="new adresse">
-        	<button>Valider</button>
+        	<input type="newad" name="newad" placeholder="New adresse">
         </div>
+        	<div class="button_2"><button>Valider</button></div>
 
-	</div>
-
-	<div class="lastcommand">
-
-		<h2>Voici vos dernières commandes</h2>
-		<ul>
-			
-		<li><a href="index.php?page=cart">Commande en cours</a></li>
-		<li><a href="index.php?page=cart">Suivis de la commande</a></li>
-		<li><a href="index.php?page=cart">Historique</a></li>
-
-		</ul>
+        <div class="lastcommand">
+            <h3>Voici vos dernières commandes</h3>
+            <ul>  
+                <li><a href="index.php?page=cart">Commande en cours</a></li>
+                <li><a href="index.php?page=cart">Suivis de la commande</a></li>
+                <li><a href="index.php?page=cart">Historique</a></li>
+            </ul>
+        </div>
 
 	</div>
 </div>
