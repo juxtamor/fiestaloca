@@ -1,24 +1,15 @@
-	<main class="main">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-sm-6">
-					<article class="post">
-						<figure class="post-thumbnail">
-							<a href="index.php?page=product&id=<?=$product->getId()?>"><?=htmlentities($product->getProdName())?>
-								<img src="<?=htmlentities($product->getImage())?>" alt="">
-								<div class="post-price"><span><?=htmlentities($product->getPrice())?>€</span></div>
-							</a>
-						</figure>
-						<div class="post-content">
-							<h2 class="post-content-title"><?=htmlentities($product->getProdName())?></h2>
-							<div class="post-content-excerpt"><?=htmlentities($product->getProdDesc())?></div>
-						</div>
-					</article>
-				</div>
-			</div>
-
-			<div class="text-center">
-				<a href="" class="button-radius">View more listings</a>
-			</div>
+<div class="col-lg-4 col-sm-6">
+	<article class="post">
+		<figure class="post-thumbnail">
+			<a href="index.php?page=product&id=<?=$product->getId()?>">
+				<img src="<?=htmlentities($product->getImage())?>" alt="">
+				<div class="post-price"><span><?=htmlentities($product->getPrice())?>€</span></div>
+			</a>
+		</figure>
+		<div class="post-content">
+			<h2 class="post-content-title"><?=htmlentities($product->getProdName())?></h2>
+			<div class="post-content-excerpt"><?=htmlentities($product->getProdDesc())?></div>
 		</div>
-	</main>
+	</article>
+</div>
+
