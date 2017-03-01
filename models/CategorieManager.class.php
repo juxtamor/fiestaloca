@@ -77,8 +77,8 @@ class CategorieManager
 			throw new Exceptions($errors);
 		}
 
-		$cat_name = mysqli_real_escape_string($this->db, $cat_name->getCatName());
-		$cat_desc = mysqli_real_escape_string($this->db, $cat_desc->getCatDesc());
+		$cat_name = mysqli_real_escape_string($this->db, $categorie->getCatName());
+		$cat_desc = mysqli_real_escape_string($this->db, $categorie->getCatDesc());
 		$res = mysqli_query($this->db, "INSERT INTO categorie (cat_name, cat_desc) VALUES('".$cat_name."', '".$cat_desc."')");
 		if (!$res)
 		{
