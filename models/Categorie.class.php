@@ -71,7 +71,7 @@ class Categorie
 		}
 		else if (strlen($cat_desc) < 3)
 		{
-			return "Description trop court (< 8)";
+			return "Description trop court (< 3)";
 		}
 		else
 		{
