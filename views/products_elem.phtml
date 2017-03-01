@@ -1,15 +1,17 @@
 <div class="col-lg-4 col-sm-6">
 	<article class="post">
-		<figure class="post-thumbnail">
-			<a href="index.php?page=product&id=<?=$product->getId()?>">
+		<a href="index.php?page=product&id=<?=$product->getId()?>">
+			<figure class="post-thumbnail">
+			
 				<img src="<?=htmlentities($product->getImage())?>" alt="">
 				<div class="post-price"><span><?=htmlentities($product->getPrice())?>€</span></div>
-			</a>
-		</figure>
-		<div class="post-content">
+				 
+			
+			</figure>
+			<div class="post-content">
 			<h2 class="post-content-title"><?=htmlentities($product->getProdName())?></h2>
 			<div class="post-content-excerpt"><?=htmlentities($product->getProdDesc())?></div>
-		</div>
+			</div>
+		</a>
 	</article>
 </div>
-
