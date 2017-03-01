@@ -13,12 +13,13 @@
 				<div class="prod_desc">De : <?=htmlentities($product->getProdDesc())?></div>
 				<div class="prod_price"><?=htmlentities($product->getPrice())?> €</div>
 				<div class="prod_stock">En stock <?=htmlentities($product->getStock())?></div>
-				<form method="post">
-					<div class="quantity">
-						<input type="number" name="quantity">
-					</div>
-						<button name="action" value"add">Ajouter au panier</button>
-				</form>
+				<form class="form" method="POST">
+	                <input type="hidden" name="action" value="add">
+	                <input type="hidden" name="id_product" value="<?=htmlentities($product->getId())?>">
+	                <button type="submit" class="button btn btn-info">Ajouter au panier</button>
+	                <label for="quantity">Quantité</label>
+	                <input type="number" id="champ1" value="0" max="<?=htmlentities($product->getStock())?>" min="0" class="stock" name="stock">
+        		</form>
 			</article>
 		</div>
 	</div>
