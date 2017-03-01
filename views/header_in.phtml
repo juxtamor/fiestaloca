@@ -8,9 +8,9 @@
 					<ul class="list-inline sousmenu">
 						<li><a href="index.php?page=products">Produits</a>
 							<ul>
-								<li><a href="index.php?page=products">Chapeaux</a></li>
-								<li><a href="index.php?page=products">Poncho</a></li>
-								<li><a href="index.php?page=products">Accessoire</a></li>
+								<?php foreach ($list AS $categorie) : ?>
+									<li><a href="#"><?=$categorie->getCatName()?></a></li>
+								<?php endforeach; ?>
 							</ul>
 						</li>
 

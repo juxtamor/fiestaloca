@@ -8,13 +8,13 @@
 					<ul class="list-inline sousmenu">
 						<li><a href="index.php?page=products">Produits</a>
 							<ul>
-								<li><a href="index.php?page=products">Chapeaux</a></li>
-								<li><a href="index.php?page=products">Ponchos</a></li>
-								<li><a href="index.php?page=products">Accessoires</a></li>
+								<?php foreach ($list AS $categorie) : ?>
+									<li><a href="#"><?=$categorie->getCatName()?></a></li>
+								<?php endforeach; ?>
 							</ul>
 						</li>
 						<li><a href="index.php?page=create_product">Créer un produit</a></li>
-						<li><a href="index.php?page=create_category">Créer une catégorie</a></li>
+						<li><a href="index.php?page=create_categorie">Créer une catégorie</a></li>
 
 						
 						<li><a href="index.php?page=cart"><i class="fa fa-cart-arrow-down"></i>
