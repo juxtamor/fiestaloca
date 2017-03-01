@@ -3,19 +3,19 @@
     <h2><?=htmlentities($_SESSION['login'])?></h2>
         <div>
         	<label for="psw">Modifier l'identifiant:</label>
-        	<input type="text" name="identifiant" placeholder="Identifiant">
+        	<input type="text" name="identifiant" placeholder="Identifiant" value="<?=$user->getLogin()?>">
         </div>
         	<div class="button_2"><button>Valider</button></div>
 
          <div>
         	<label for="psw">Modifier le mot de passe:</label>
-        	<input type="new mdp" name="new mdp" placeholder="Mot de passe">
+        	<input type="time" name="new mdp" placeholder="Mot de passe">
         </div>
         	<div class="button_2"><button>Valider</button></div>
 
          <div>
         	<label for="psw">Modifier l'adresse:</label>
-        	<input type="modifadress" name="modifadress" placeholder="Adresse">
+        	<input type="modifadress" name="modifadress" placeholder="Adresse" value="<?=$user->getAdress()?>">
         </div>
         	<div class="button_2"><button>Valider</button></div>
 

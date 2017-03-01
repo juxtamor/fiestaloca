@@ -91,4 +91,17 @@ if (isset($_POST['action']))
         }
         
 }
+/*
+$product = $manager->findById($_POST['id_product']);
+$err = $product->setProdName("nouveau nom");
+if ($err)
+    $errors[] = $err;
+...
+if (count($errors) == 0)
+{
+    $manager->save($product);
+    header
+    exit;
+}
+*/
 ?>
