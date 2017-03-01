@@ -12,8 +12,9 @@ if (isset($_POST['cat_name'], $_POST['cat_desc'])) //$_SESSION['id']))
 	try
 	{
 		$categorie = $manager->create($_POST['cat_name'],$_POST['cat_desc']);
-		if ($categorie		// Etape 4
-			header('Location: index.php?page=products');
+		if ($categorie)
+		{		// Etape 4
+			header('Location: index.php?page=create_categorie');
 			exit;
 		}
 		else
