@@ -13,7 +13,7 @@ class CategorieManager
 	public function findAll()
 	{
 		$list = [];
-		$res = mysqli_query($this->db, "SELECT * FROM categorie ORDER BY login");
+		$res = mysqli_query($this->db, "SELECT * FROM categorie ORDER BY cat_name");
 		while ($categorie = mysqli_fetch_object($res, "Categorie", [$this->db]))
 		{
 			$list[] = $categorie;
