@@ -1,13 +1,6 @@
 <?php
 class User
 {
-
-	private $db;
-
-	public function __construct($db)
-	{
-		$this->db = $db;
-	}
 	// liste des propriétés -> privées
 	private $id;
 	private $login;
@@ -17,9 +10,23 @@ class User
 	private $birthdate;
 	private $admin;
 
+	private $cart;
+	private $db;
+
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
+
 	public function getId()
 	{
 		return $this->id;
+	}
+	public function getCart()
+	{
+		$manager = new CommandManager($this->db);
+		$this->cart = $manager->findCartByUser($this);
+		return $this->cart;
 	}
 
 	public function getLogin()

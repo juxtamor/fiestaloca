@@ -49,11 +49,16 @@ class CommentManager
 		return $comment;
 	}
 
-	public function create($content, User $author, Product $prod)
+	public function create($content, User $author, Product $prod, $note)
 	{
 		$errors = [];
 		$comment = new Comment($this->db);
 		$error = $comment->setContent($content);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+		$error = $comment->setNote($note);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -73,9 +78,10 @@ class CommentManager
 			throw new Exceptions($errors);
 		}
 		$content = mysqli_real_escape_string($this->db, $comment->getContent());
+		$note = intval($comment->getNote());
 		$id_author = intval($comment->getAuthor()->getId());
 		$id_prod = intval($comment->getProd()->getId());
-		$res = mysqli_query($this->db, "INSERT INTO comments (content, id_author, id_prod) VALUES('".$content."', '".$id_author."', '".$id_prod."')");
+		$res = mysqli_query($this->db, "INSERT INTO comments (content, id_author, id_prod, note) VALUES('".$content."', '".$id_author."', '".$id_prod."', '".$note."')");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);

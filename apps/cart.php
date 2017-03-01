@@ -1,3 +1,6 @@
 <?php
-require('views/cart.phtml');
+if (isset($_SESSION['id']))
+{
+	require('views/cart.phtml');
+}
 ?>

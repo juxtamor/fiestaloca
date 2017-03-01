@@ -1,28 +1,30 @@
-
 <?php
 if (isset($_POST['action']))
 {
         $action = $_POST['action'];
         if ($action == "add")
         {
-                if (isset($_SESSION['id'], $_POST['id_products']))// $_POST['quantity']
+                if (isset($_SESSION['id'], $_POST['id_product'], $_POST['quantity']))
                 {
                         $manager = new CommandManager($db);
                         $userManager = new UserManager($db);
-                        $productManager = new ProductManager($db);
-                        $product = $productManager->findById($_POST['id_products']);
                         $user = $userManager->findById($_SESSION['id']);
+                        $productManager = new ProductManager($db);
+                        $product = $productManager->findById($_POST['id_product']);
+                        // if ($_POST['quantity'] > $product->getStock())
+                            // YOLO
                         $cart = $user->getCart();
                         try
                         {
-                                if (!$cart)
-                                {
-                                        $cart = $manager->create($user);
-                                }
+                            if (!$cart)
+                            {
+                                $cart = $manager->create($user);
+                            }
+                            // while ($quantity)
                                 $cart->addProduct($product);
-                                $manager->save($cart);
-                                header('Location: index.php?page=cart');
-                                exit;
+                            $manager->save($cart);
+                            header('Location: index.php?page=cart');
+                            exit;
                         }
                         catch (Exceptions $e)
                         {

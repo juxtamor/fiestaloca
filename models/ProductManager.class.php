@@ -13,7 +13,7 @@ class ProductManager
 	{
 		$id = intval($command->getId());
 		$list = [];
-		$res = mysqli_query($this->db, "SELECT products.* FROM products LEFT JOIN link_command_products ON link_command_products.id_product=products.id WHERE link_command_products.id_product.id_command='".$id."'");
+		$res = mysqli_query($this->db, "SELECT products.* FROM products LEFT JOIN link_command_products ON link_command_products.id_products=products.id WHERE link_command_products.id_command='".$id."'");
 		while ($product = mysqli_fetch_object($res, "Product", [$this->db]))
 		{
 			$list[] = $product;

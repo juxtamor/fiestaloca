@@ -35,12 +35,18 @@ class CommandManager
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\ SECURITE
 		$id_user = mysqli_real_escape_string($this->db, $id_user);
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
-		$res = mysqli_query($this->db, "SELECT * FROM command WHERE id_user='".$id_user."' LIMIT 1");
+		$res = mysqli_query($this->db, "SELECT * FROM command WHERE id_user='".$id_user."'");
 		$command = mysqli_fetch_object($res, "Command", [$this->db]);
 		return $command;
 		
 	}
-	
+	public function findCartByUser(User $user)
+	{
+		$id_user = intval($user->getId());
+		$res = mysqli_query($this->db, "SELECT * FROM command WHERE id_user='".$id_user."' AND status='Panier' LIMIT 1");
+		$command = mysqli_fetch_object($res, "Command", [$this->db]);
+		return $command;
+	}
 	// UPDATE
 	public function save(Command $command)
 	{
@@ -57,8 +63,8 @@ class CommandManager
 		//
 		$status = mysqli_real_escape_string($this->db, $command->getStatus());
 		$total_price = intval($command->getTotalPrice());
-		$id_user= intval($this->db, $command->getUser());
-		mysqli_query($this->db, "UPDATE command SET ='".$status."', id_user='".$id_user."',total_price='".$total_price"' WHERE id='".$id."'LIMIT 1");
+		$id_user = intval($command->getUser()->getId());
+		$res = mysqli_query($this->db, "UPDATE command SET status='".$status."', id_user='".$id_user."',total_price='".$total_price."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
@@ -75,21 +81,11 @@ class CommandManager
 	}
 	
 	// INSERT
-	public function create($status, $command, User $user)
+	public function create(User $user)
 	{
 		$errors = [];
 		$command = new Command($this->db);
 		$error = $command->setUser($user);
-		if ($error)
-		{
-			$errors[] = $error;
-		}
-		$error = $command->setStatus($status);
-		if ($error)
-		{
-			$errors[] = $error;
-		}
-		$error = $command->setTotalPrice($total_price);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -100,10 +96,8 @@ class CommandManager
 		}
 
 		
-		$status = mysqli_real_escape_string($this->db, $command->getStatus());
-		$total_price = intval($command->getTotalPrice());
-		$user= intval($this->db, $command->getUser()->getId());
-		$res =mysqli_query($this->db, "INSERT INTO command (status, id_user, total_price) VALUES('".$status."', '".$id_user."', '".$total_price."')");
+		$id_user = intval($command->getUser()->getId());
+		$res =mysqli_query($this->db, "INSERT INTO command (id_user) VALUES('".$id_user."')");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);

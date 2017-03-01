@@ -1,6 +1,6 @@
 <?php
 // var_dump($_POST);
-if (isset($_POST['comment'], $_POST['id_product'], $_SESSION['id']))
+if (isset($_POST['comment'], $_POST['id_product'], $_SESSION['id'], $_POST['note']))
 {
 	// Etape 2
 	$userManager = new UserManager($db);
@@ -13,7 +13,7 @@ if (isset($_POST['comment'], $_POST['id_product'], $_SESSION['id']))
 	try
 	{
 		// Etape 3
-		$comment = $manager->create($_POST['comment'], $author, $product);
+		$comment = $manager->create($_POST['comment'], $author, $product, $_POST['note']);
 		if ($comment)
 		{
 			// Etape 4

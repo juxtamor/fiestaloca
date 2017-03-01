@@ -13,6 +13,10 @@ class Command
 
 	//PROPRIETE TRANSMISE
 	private $db;
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
 	
 
 	public function getId()
@@ -35,7 +39,8 @@ class Command
 		{
 			$this->getProducts();
 		}
-		$this->products[] = $product;	
+		$this->products[] = $product;
+		$this->total_price += $product->getPrice();
 	}
 
 	public function getStatus()

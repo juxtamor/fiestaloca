@@ -1,6 +1,6 @@
 <div class="container">
 <article class="article-center comment">
-	<h3><?=htmlentities($comment->getAuthor()->getLogin())?> a écrit :</h3>
+	<h3>[<?=intval($comment->getNote())?>/5] <?=htmlentities($comment->getAuthor()->getLogin())?> a écrit :</h3>
 	<p><?=htmlentities($comment->getContent())?></p>
 	<div class="art_date"><?=htmlentities($comment->getDate())?></div>
 </article>

@@ -53,6 +53,21 @@ class Comment
 	{
 		return $this->note;
 	}
+	public function setNote($note)
+	{
+		if ($note < 1)
+		{
+			return "Note < 1";
+		}
+		else if ($note > 5)
+		{
+			return "Note > 5";
+		}
+		else
+		{
+			$this->note = $note;
+		}
+	}
 
 	public function getDate()
 	{

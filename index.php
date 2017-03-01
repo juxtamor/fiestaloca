@@ -30,15 +30,18 @@ require('models/User.class.php');
 require('models/Comment.class.php');
 require('models/Product.class.php');
 require('models/Categorie.class.php');
+require('models/Command.class.php');
 require('models/UserManager.class.php');
 require('models/CommentManager.class.php');
 require('models/ProductManager.class.php');
 require('models/CategorieManager.class.php');
+require('models/CommandManager.class.php');
 
 require('apps/traitement_users.php');
 require('apps/traitement_products.php');
 require('apps/traitement_comments.php');
 require('apps/traitement_categorie.php');
+require('apps/traitement_command.php');
 
 require('apps/skel.php');
 
