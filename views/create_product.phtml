@@ -37,13 +37,13 @@
 				<label for="id_category">Categorie :</label>
 	                    <select id="id_category" name="id_category">
 	                    	<option value="">Choisissez une catégorie</option>
-	                        <option value="1">Chapeaux</option>
-	                        <option value="2">Ponchos</option>
-	                        <option value="3">Accesoires</option>
+	                        <?php foreach ($list AS $categorie) : ?>
+									<option><?=$categorie->getCatName()?></option>
+							<?php endforeach; ?>
 	                    </select>
 		    </div>
 
-			<div class="button"><button>Envoyer</button></div>
+			<div class="button_2"><button>Envoyer</button></div>
 
 		</form>
 	</div>
