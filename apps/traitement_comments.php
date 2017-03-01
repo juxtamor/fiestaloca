@@ -1,13 +1,13 @@
 <?php
 // var_dump($_POST);
-if (isset($_POST['comment'], $_POST['id_prod'], $_SESSION['id']))
+if (isset($_POST['comment'], $_POST['id_product'], $_SESSION['id']))
 {
 	// Etape 2
 	$userManager = new UserManager($db);
 	$author = $userManager->findById($_SESSION['id']);
 
 	$productManager = new ProductManager($db);
-	$product = $productManager->findById($_POST['id_prod']);
+	$product = $productManager->findById($_POST['id_product']);
 	
 	$manager = new CommentManager($db);
 	try

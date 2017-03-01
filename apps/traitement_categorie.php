@@ -1,16 +1,16 @@
 
 <?php
 // var_dump($_POST);
-if (isset($_POST['comment'], $_POST['id_article'], $_SESSION['id']))
+if (isset($_POST['cat_name'], $_POST['cat_desc']))
 {
 	// Etape 2
-	$userManager = new UserManager($db);
-	$author = $userManager->findById($_SESSION['id']);
+	$productManager = new ProductManager($db);
+	$author = $userManager->findById($_POST['cat_name']);
 
-	$articleManager = new ProductManager($db);
-	$article = $productManager->findById($_POST['id_article']);
+	$productManager = new ProductManager($db);
+	$product = $productManager->findById($_POST['cat_desc']);
 	
-	$manager = new CommentManager($db);
+	$manager = new CategorieManager($db);
 	try
 	{
 		// Etape 3
