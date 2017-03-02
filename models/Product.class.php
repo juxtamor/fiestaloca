@@ -64,9 +64,9 @@ class Product
 		{
 			return "Contenu trop long (> 4095)";
 		}
-		else if (strlen($prod_desc) < 65)
+		else if (strlen($prod_desc) < 8)
 		{
-			return "Contenu trop court (< 65)";
+			return "Contenu trop court (< 8)";
 		}
 		else
 		{
