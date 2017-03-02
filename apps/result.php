@@ -12,7 +12,7 @@ if(isset($_GET['recherche']))
 {   
   $recherche = $_GET["mot"];
   $res= mysqli_query($db, "SELECT * FROM products WHERE prod_name COLLATE utf8_unicode_ci LIKE '%$recherche%'");
-  while($registro = mysqli_fetch_assoc($res)) 
+  while($product = mysqli_fetch_object($res, 'Product', [$db])) 
   {  
     require ("views/result.phtml");
   } 

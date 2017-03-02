@@ -1,5 +1,7 @@
 <ul>
-	<td class="post_thumbnail" align="center"><?=$registro['prod_name']?></td>
-	<td class="post_thumbnail" align="center"><img src="<?=$registro['image']?>"></td>
+	<td class="post_thumbnail" align="center"><?=$product->getProdName()?></td>
+	<td class="post_thumbnail" align="center"><?=$product->getPrice()?>€</td>
+	<td class="post_thumbnail" align="center"><a href="index.php?page=product&id=<?=$product->getId()?>"><img src="<?=$product->getImage()?>"></a></td>
+
 	 
 </ul>
