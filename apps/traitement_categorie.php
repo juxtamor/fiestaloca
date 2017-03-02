@@ -4,7 +4,6 @@
 // 3. traitement des données (enregistrer les informations vers base de données)
 // 4. redirection (PRG : POST REDIRECT GET) UX et Sécurité -->
 // var_dump($_POST);
-var_dump($_POST);
 if (isset($_POST['cat_name'], $_POST['cat_desc'])) //$_SESSION['id']))
 {
 	// Etape 2 : Validation des données

@@ -3,9 +3,8 @@
 // 2. sécurisation/validation des données (ex : verification de longueur)
 // 3. traitement des données (enregistrer les informations vers base de données)
 // 4. redirection (PRG : POST REDIRECT GET) UX et Sécurité -->
-// var_dump($_POST);
 
-var_dump($_POST);
+// var_dump($_POST);
 if (isset($_POST['prod_name'], $_POST['prod_desc'], $_POST['price'], $_POST['image'], $_POST['stock'], $_POST['id_category'], $_POST['prod_cover'])) //$_SESSION['id']))
 {
 	// Etape 2 : Validation des données

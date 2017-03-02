@@ -3,8 +3,8 @@
 // 2. sécurisation/validation des données (ex : verification de longueur)
 // 3. traitement des données (enregistrer les informations vers base de données)
 // 4. redirection (PRG : POST REDIRECT GET) UX et Sécurité -->
-// var_dump($_POST);
 
+// var_dump($_POST);
 if (isset($_GET['page']) && $_GET['page'] == "logout")
 {
 	session_destroy();
