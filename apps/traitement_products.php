@@ -5,7 +5,8 @@
 // 4. redirection (PRG : POST REDIRECT GET) UX et Sécurité -->
 // var_dump($_POST);
 
-if (isset($_POST['prod_name'], $_POST['prod_desc'], $_POST['price'], $_POST['image'], $_POST['stock'], $_POST['prod_cover'], $_POST['id_category'])) //$_SESSION['id']))
+var_dump($_POST);
+if (isset($_POST['prod_name'], $_POST['prod_desc'], $_POST['price'], $_POST['image'], $_POST['stock'], $_POST['id_category'], $_POST['prod_cover'])) //$_SESSION['id']))
 {
 	// Etape 2 : Validation des données
 	$categoryManager = new CategorieManager($db);
