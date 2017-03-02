@@ -10,9 +10,9 @@
 		<div class="col-lg-6 col-sm-6">
 			<article class="post_prod">
 				<div class="prod_name"><?=htmlentities($product->getProdName())?></div>
-				<div class="prod_desc"><u>Description </u>: <?=htmlentities($product->getProdDesc())?></div>
-				<div class="prod_price"><u>Prix </u>: <?=htmlentities($product->getPrice())?> €</div>
-				<div class="prod_stock">En stock : <?=htmlentities($product->getStock())?></div>
+				<div class="prod_desc"><span>Description </span>: <?=htmlentities($product->getProdDesc())?></div>
+				<div class="prod_price"><span>Prix :</span> <?=htmlentities($product->getPrice())?> €</div>
+				<div class="prod_stock"><span>En stock :</span> <?=htmlentities($product->getStock())?></div>
 				<form class="form" method="POST">
 	                <input type="hidden" name="action" value="add">
 	                <input type="hidden" name="id_product" value="<?=htmlentities($product->getId())?>">
