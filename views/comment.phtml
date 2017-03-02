@@ -6,9 +6,9 @@
 			while ($i <= 5)
 			{
 				if ($i <= intval($comment->getNote()))
-					echo '<span style="color:orange">☆</span>';
+					echo '<span class="starOn">☆</span>';
 				else
-					echo "<span>☆</span>";
+					echo '<span class="starOff">☆</span>';
     			$i++;  /* La valeur affichée est $i avant l'incrémentation (post-incrémentation)  */
 			}
 		?>

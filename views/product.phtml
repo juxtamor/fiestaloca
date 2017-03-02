@@ -1,24 +1,25 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-6 col-sm-6">
-			<article class="post">
-				<h3><?=htmlentities($product->getProdName())?></h3>
+			<article class="post_prod">
+				<h3 class="prod_category">Categorie <?=htmlentities($product->getCategory()->getCatName())?></h3>
 				<div class="post"><img src="<?=htmlentities($product->getImage())?>"></div>
 			</article>
 		</div>
 
 		<div class="col-lg-6 col-sm-6">
-			<article class="post">
-				<div class="prod_category">Category <?=htmlentities($product->getCategory()->getCatName())?></div>
-				<div class="prod_desc">De : <?=htmlentities($product->getProdDesc())?></div>
-				<div class="prod_price"><?=htmlentities($product->getPrice())?> €</div>
-				<div class="prod_stock">En stock <?=htmlentities($product->getStock())?></div>
+			<article class="post_prod">
+				<div class="prod_name"><?=htmlentities($product->getProdName())?></div>
+				<div class="prod_desc"><u>Description </u>: <?=htmlentities($product->getProdDesc())?></div>
+				<div class="prod_price"><u>Prix </u>: <?=htmlentities($product->getPrice())?> €</div>
+				<div class="prod_stock">En stock : <?=htmlentities($product->getStock())?></div>
 				<form class="form" method="POST">
 	                <input type="hidden" name="action" value="add">
 	                <input type="hidden" name="id_product" value="<?=htmlentities($product->getId())?>">
-	                <button type="submit" class="button btn btn-info">Ajouter au panier</button>
-	                <label for="quantity">Quantité</label>
+	                <label class="prod_quantity" for="quantity">Quantité</label>
 	                <input type="number" id="champ1" value="0" max="<?=htmlentities($product->getStock())?>" min="0" class="stock" name="quantity">
+	                <br>
+	                <button type="submit" class="button btn btn-info">Ajouter au panier</button>
         		</form>
 			</article>
 		</div>
@@ -29,18 +30,3 @@ require('apps/comments.php');
 require('apps/create_comment.php');
 require('apps/del_comment.php');
 ?>
-	<!-- <article class="prod_name">
-
-		<div class="prod_category">Category <?=htmlentities($product->getCategory()->getCatName())?></div>
-		<h3><?=htmlentities($product->getProdName())?></h3>
-		<div class="prod_desc">De : <?=htmlentities($product->getProdDesc())?></div>
-		<div class="prod_price"><?=htmlentities($product->getPrice())?> €</div>
-		<div class="post"><img src="<?=htmlentities($product->getImage())?>"></div>
-		<div class="prod_stock">En stock <?=htmlentities($product->getStock())?></div>
-		<form method="post">
-			<div class="quantity">
-				<input type="number" name="quantity">
-			</div>
-			<button name="action" value"add">Ajouter au panier</button>
-		</form>
-	</article> -->
