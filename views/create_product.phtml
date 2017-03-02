@@ -38,7 +38,7 @@
 	                    <select id="id_category" name="id_category">
 	                    	<option value="">Choisissez une catégorie</option>
 	                        <?php foreach ($list AS $categorie) : ?>
-									<option><?=$categorie->getCatName()?></option>
+									<option value="<?=$categorie-> getId()?>"><?=$categorie->getCatName()?></option>
 							<?php endforeach; ?>
 	                    </select>
 		    </div>
