@@ -28,9 +28,21 @@
 
 	<div class="search">
 		<div class="container">
-			<form action="">
-				<input type="text" name="s" class="search-field" placeholder="Rechercher...">
-				<button class="search-button"><i class="fa fa-search"></i></button>
+			<form method="GET" >
+				<input type='hidden' name="page" value="result">
+				<input type="text" name="mot" class="search-field" placeholder="Rechercher...">
+				<button type ="submit" class="search-button" name="recherche"><i class="fa fa-search"></i></button>
 			</form>
 		</div>
 	</div>
+	
+
+<!-- 	<div class="search">
+		<div class="container">
+			<form action="apps/result.php" method="GET" >
+				<input type="text" name="search" class="search-field" placeholder="Rechercher...">
+				<button type ="submit" class="search-button"><i class="fa fa-search"></i></button>
+			</form>
+		</div>
+	</div>
+ -->
