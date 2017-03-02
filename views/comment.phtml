@@ -1,19 +1,20 @@
 <div class="container">
-<article class="article-center comment">
-	<h3><?=htmlentities($comment->getAuthor()->getLogin())?> a écrit :</h3>
-		<?php
-			$i = 1;
-			while ($i <= 5)
-			{
-				if ($i <= intval($comment->getNote()))
-					echo '<span style="color:orange">☆</span>';
-				else
-					echo "<span>☆</span>";
-    			$i++;  /* La valeur affichée est $i avant l'incrémentation (post-incrémentation)  */
-			}
-		?>
-	<p><?=htmlentities($comment->getContent())?></p>
-	<div class="art_date"><?=htmlentities($comment->getDate())?></div>
-</article>
+	<article class="comment-center comment">
+		<h3 class="comment_user"><?=htmlentities($comment->getAuthor()->getLogin())?> :</h3>
+		<div class="comment_date"><?=htmlentities($comment->getDate())?></div>
+			<?php
+				$i = 1;
+				while ($i <= 5)
+				{
+					if ($i <= intval($comment->getNote()))
+						echo '<span class="starOn">☆</span>';
+					else
+						echo '<span class="starOff">☆</span>';
+	    			$i++;  /* La valeur affichée est $i avant l'incrémentation (post-incrémentation)  */
+				}
+			?>
+		<div class="comment_content"><?=htmlentities($comment->getContent())?></div>
+		<br>
+	</article>
 </div>
 
