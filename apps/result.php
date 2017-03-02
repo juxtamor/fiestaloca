@@ -11,7 +11,7 @@
 if(isset($_GET['recherche'])) 
 {   
   $recherche = $_GET["mot"];
-  $res= mysqli_query($db, "SELECT * FROM products WHERE prod_name like '%$recherche%'");
+  $res= mysqli_query($db, "SELECT * FROM products WHERE prod_name COLLATE utf8_unicode_ci LIKE '%$recherche%'");
   while($registro = mysqli_fetch_assoc($res)) 
   {  
     require ("views/result.phtml");
