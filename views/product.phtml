@@ -14,9 +14,12 @@
 				<div class="prod_price"><span>Prix :</span> <?=htmlentities($product->getPrice())?> €</div>
 				<div class="prod_stock"><span>En stock :</span> <?=htmlentities($product->getStock())?></div>
 				<?php
-				require('add_product.php');
+				if (!isset($_SESSION['id']))
+				{
+					echo '<a href="index.php?page=login">Connectez-vous</a>';
+				}
+				require('apps/add_product.php');
 				?>
-        		<button type="submit" class="button btn btn-info" value="index.php?page=edit_product"><a href="index.php?page=edit_products">Modifier</a></button>
 			</article>
 		</div>
 	</div>
