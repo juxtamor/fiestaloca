@@ -13,14 +13,9 @@
 				<div class="prod_desc"><span>Description </span>: <?=htmlentities($product->getProdDesc())?></div>
 				<div class="prod_price"><span>Prix :</span> <?=htmlentities($product->getPrice())?> €</div>
 				<div class="prod_stock"><span>En stock :</span> <?=htmlentities($product->getStock())?></div>
-				<form class="form" method="POST">
-	                <input type="hidden" name="action" value="add">
-	                <input type="hidden" name="id_product" value="<?=htmlentities($product->getId())?>">
-	                <label class="prod_quantity" for="quantity">Quantité</label>
-	                <input type="number" id="champ1" value="0" max="<?=htmlentities($product->getStock())?>" min="0" class="stock" name="quantity">
-	                <br>
-	                <button type="submit" class="button btn btn-info">Ajouter au panier</button>
-        		</form>
+				<?php
+				require('add_product.php');
+				?>
         		<button type="submit" class="button btn btn-info" value="index.php?page=edit_product"><a href="index.php?page=edit_products">Modifier</a></button>
 			</article>
 		</div>
