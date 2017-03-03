@@ -396,6 +396,24 @@ a:hover {
 .post_prod .prod_quantity {
   margin: 0px 5px 10px 0px;
 }
+
+/*CART ELEM*/
+.mini {
+  display: inline-block;
+  height: 100px;
+    width: 100px;
+    text-align: center; /* On centre l'image dans le div */
+    overflow: hidden; /* Cache les choses qui dépassent du div */
+    border: 1px solid black;
+    border-radius: 100px;
+    margin: 5px;
+    /*float: left;*/
+  }
+.mini img{
+  width: 100%;
+   /*height: auto;*/
+   vertical-align: middle;
+}
 /* FOOTER */
 .footer {
   background: #B21B24;

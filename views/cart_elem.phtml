@@ -1,3 +1,8 @@
-<div>
-	<?=$product->getProdName()?> : <?=$product->getPrice()?>
+<div class="in_cart">
+	<div class="mini">
+		<img src="<?=htmlentities($product->getImage())?>" alt="osef">
+	</div>
+</div>
+<div class="in_cart">
+	<p>Ref. : <?=$product->getProdName()?> | Prix : <?=$product->getPrice()?>€</p>
 </div>
