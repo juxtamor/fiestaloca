@@ -30,7 +30,7 @@ class CommandManager
 		return $command;
 	}
 
-	public function findByUser($id_user)
+	public function findByUser(User $user)
 	{
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\ SECURITE
 		$id_user = mysqli_real_escape_string($this->db, $id_user);
