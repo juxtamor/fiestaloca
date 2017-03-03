@@ -1,49 +1,34 @@
 <?php
 $errors=[];
-// try
-// {
-// throw new Exception("Erreur de test d'erreur... <3");
-// }
-// catch(Exception $exception)
-// {
-// $errors[] = $exception->getMessage();
-// }
-// try
-// {
-// throw new Exception("Erreur de test d'erreur... le retour <3");
-// }
-// catch(Exception $exception)
-// {
-// $errors[] = $exception->getMessage();
-// }
+
 $db = mysqli_connect("192.168.1.79","fiestaloca","fiestaloca","fiestaloca"); //URL, Utilisateur, MdP, Base de données//
 session_start();// http://php.net/manual/fr/function.session-start.php
-$access = ["products", "login", "register", "create_product", "edit_product", "product", "accueil","profil","cart", "create_categorie", "categorie", "result","edit_categorie","all_products","edit_product"];
+$access = ["errors", "products", "login", "register", "create_product", "edit_product", "product", "accueil","profil","cart", "create_categorie", "categorie", "result","edit_categorie","all_products","edit_product"];
 $page = "accueil";
 if (isset($_GET['page']) && in_array($_GET['page'], $access))
 {
     $page = $_GET['page'];
 }
-require('models/Exceptions.class.php');
 
-require('models/User.class.php');
-require('models/Comment.class.php');
-require('models/Product.class.php');
-require('models/Categorie.class.php');
-require('models/Command.class.php');
-require('models/UserManager.class.php');
-require('models/CommentManager.class.php');
-require('models/ProductManager.class.php');
-require('models/CategorieManager.class.php');
-require('models/CommandManager.class.php');
+// __autoload : http://php.net/manual/fr/function.autoload.php
+function __autoload($classname)
+{
+	require('models/'.$classname.'.class.php');
+}
 
-require('apps/traitement_users.php');
-require('apps/traitement_products.php');
-require('apps/traitement_comments.php');
-require('apps/traitement_categorie.php');
-require('apps/traitement_command.php');
+
+$access_traitement = ["login"=>"users", "register"=>"users", "create_categorie"=>"categorie", "cart"=>"command", "user"=>"users", "create_product"=>"products", "product"=>"comments||||command"];
+if (isset($_GET['page'], $access_traitement[$_GET['page']]))
+{
+	$traitement = $access_traitement[$_GET['page']];
+	require('apps/traitement_'.$traitement.'.php');
+}
+
+// require('apps/traitement_users.php');
+// require('apps/traitement_products.php');
+// require('apps/traitement_comments.php');
+// require('apps/traitement_categorie.php');
+// require('apps/traitement_command.php');
 
 require('apps/skel.php');
-
-
 ?>
