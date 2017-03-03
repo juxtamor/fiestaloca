@@ -3,9 +3,17 @@ if (isset($_GET['id_category']))
 {
         $categorieManager = new CategorieManager($db);
         $category = $categorieManager->findById($_GET['id_category']);
-        $list = $category->getProducts();
-        
-		require('views/products.phtml');        
+        if ($category)
+        {
+	        $list = $category->getProducts();
+			require('views/products.phtml');
+        }
+
+		else
+		{
+			$errors[]="Ce produit n'existe pas";
+			require('views/errors.phtml');
+		}
 }
 else
 {
@@ -13,4 +21,5 @@ else
 	$list = $manager->findAll();
 	require('views/all_products.phtml');
 }
+
 ?>
