@@ -51,19 +51,22 @@ class CommandManager
 	public function save(Command $command)
 	{
 		$id = intval($command->getId());
-		//		
 		$products = $command->getProducts();
+		$productManager = new ProductManager($this->db);
 		mysqli_query($this->db, "DELETE FROM link_command_products WHERE id_command='".$id."'");
 		$count = 0;
 		while ($count < count($products))
 		{
+			$product = $products[$count];
 			mysqli_query($this->db, "INSERT INTO link_command_products (id_command, id_products) VALUES('".$id."', '".$products[$count]->getId()."')");
+			$product->setStock($product->getStock() - 1);
+			$productManager->save($product);
 			$count++;
 		}
 		//
-		$status = mysqli_real_escape_string($this->db, $command->getStatus());
-		$total_price = intval($command->getTotalPrice());
 		$id_user = intval($command->getUser()->getId());
+		$status = mysqli_real_escape_string($this->db, $command->getStatus());
+		$total_price = floatval($command->getTotalPrice());
 		$res = mysqli_query($this->db, "UPDATE command SET status='".$status."', id_user='".$id_user."',total_price='".$total_price."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{
@@ -79,7 +82,7 @@ class CommandManager
 		mysqli_query($this->db, "DELETE from command WHERE id='".$id."' LIMIT 1");
 		return $command;
 	}
-	
+
 	// INSERT
 	public function create(User $user)
 	{

@@ -8,9 +8,11 @@ if (isset($_POST['action']))
                 {
                         $manager = new CommandManager($db);
                         $userManager = new UserManager($db);
-                        $user = $userManager->findById($_SESSION['id']);
                         $productManager = new ProductManager($db);
+                        $user = $userManager->findById($_SESSION['id']);
                         $product = $productManager->findById($_POST['id_product']);
+                        $quantity =intval($_POST['quantity']);
+
                         // if ($_POST['quantity'] > $product->getStock())
                             // YOLO
                         $cart = $user->getCart();
@@ -20,9 +22,18 @@ if (isset($_POST['action']))
                             {
                                 $cart = $manager->create($user);
                             }
-                            // while ($quantity)
+                            if($product->getStock()>=$quantity)
+                            {
+                                $count=0;
+                                while($count < $quantity)
+                                {
                                 $cart->addProduct($product);
+                                $count++;
+                                }
+                            }
+                            // while ($quantity)
                             $manager->save($cart);
+                            $cart->addProduct($product);
                             header('Location: index.php?page=cart');
                             exit;
                         }

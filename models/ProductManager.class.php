@@ -59,11 +59,12 @@ class ProductManager
 	public function save(Product $product)
 	{
 		$id = intval($product->getId());
-		//			
+		$id_category = intval($product->getCategory()->getId());
 		$prod_name = mysqli_real_escape_string($this->db, $product->getProdName());
 		$prod_desc = mysqli_real_escape_string($this->db, $product->getProdDesc());
-		$id_category = intval($this->db, $category->getId());
-		mysqli_query($this->db, "UPDATE products SET prod_name='".$prod_name."', product='".$product."', id_category='".$id_category."' WHERE id='".$id."'LIMIT 1");
+		$price = floatval($product->getPrice());
+		$stock =intval($product->getStock());
+		$res = mysqli_query($this->db, "UPDATE products SET prod_name='".$prod_name."', prod_desc='".$prod_desc."', stock='".$stock."', price='".$price."', id_category='".$id_category."' WHERE id='".$id."'LIMIT 1");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
