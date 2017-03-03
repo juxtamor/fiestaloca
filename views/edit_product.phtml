@@ -1,15 +1,50 @@
-<hr>
-<div class="new_product">
-<h2>Nouveau produit</h2>
-	<form method="post">
-		<div>
-	        <label for="prod_name">Name :</label>
-	        <input type="text" id="prod_name" />
-	    </div>
-		<div class="form-saut">
-			<label for="message">Votre message : </label>
-			<textarea name="message" id="message" placeholder="Dites moi ce que vous attendez de moi !" ></textarea>
-			<button>Envoyer</button>
-		</div>
-	</form>
+<div class="container">
+	<div class="page">
+	<h2>Modifier le produit</h2>
+		<form method="post">
+		
+		    <div>
+		        <label for="prod_name">Produit :</label>
+		        <input type="text" id="prod_name" name="prod_name" />
+		    </div>
+
+	 		<div>
+		        <label for="price">Prix :</label>
+		        <input type="text" id="price" name="price" />  €
+		    </div>
+
+			<div>
+		        <label for="image">Lien de l'image :</label>
+		        <input type="text" id="image" name="image" /> 
+		    </div>
+
+			<div>
+		        <label for="prod_cover">Miniature:</label>
+		        <input type="text" id="prod_cover" name="prod_cover" /> 
+		    </div>
+
+		    <div>
+		        <label for="stock">Combien en stock :</label>
+		        <input type="text" id="stock" name="stock" />
+		    </div>
+
+			<div class="form-saut">
+				<label for="prod_desc">Description : </label>
+				<textarea name="prod_desc" id="desc" placeholder="Description du produit..." ></textarea>
+			</div>
+
+		    <div>
+				<label for="id_category">Categorie :</label>
+	                    <select id="id_category" name="id_category">
+	                    	<option value="">Choisissez une catégorie</option>
+	                        <?php foreach ($list AS $categorie) : ?>
+									<option value="<?=$categorie-> getId()?>"><?=$categorie->getCatName()?></option>
+							<?php endforeach; ?>
+	                    </select>
+		    </div>
+
+			<div class="button"><button>Envoyer</button></div>
+
+		</form>
+	</div>
 </div>
