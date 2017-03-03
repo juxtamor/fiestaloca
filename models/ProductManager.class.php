@@ -122,7 +122,7 @@ class ProductManager
 		// $product = mysqli_real_escape_string($this->db, $product->getProduct());
 		$prod_name = mysqli_real_escape_string($this->db, $product->getProdName());
 		$prod_desc = mysqli_real_escape_string($this->db, $product->getProdDesc());
-		$id_category = mysqli_real_escape_string($this->db, $product->getCategory()->getId());
+		$id_category = intval($this->db, $product->getCategory()->getId());
 		$prod_cover = mysqli_real_escape_string($this->db, $product->getProdCover());
 		// $id_category = intval($product->getCategory()->getId());
 		$res =mysqli_query($this->db, "INSERT INTO products (prod_name, prod_desc, price, image, stock, id_category, prod_cover) VALUES('".$prod_name."', '".$prod_desc."', '".$price."' , '".$image."','".$stock."','".$id_category."','".$prod_cover."')");
