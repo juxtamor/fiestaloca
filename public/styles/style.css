@@ -267,6 +267,7 @@ a:hover {
 .starOn {
   font-size: 2em;
   color: orange;
+  font-weight: 900;
 }
 .starOff {
   font-size: 2em;
@@ -286,6 +287,7 @@ a:hover {
 .rating a:focus ~ a {
   color: orange;
   cursor: pointer;
+  font-weight: 900;
 }
 /* EACH POST*/
 .post {
