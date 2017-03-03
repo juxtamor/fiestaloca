@@ -8,8 +8,8 @@ class UserManager
 		$this->db = $db;
 	}
 
-	// SELECT
 
+	// SELECT
 	public function findAll()
 	{
 		$list = [];
@@ -32,7 +32,7 @@ class UserManager
 
 	public function findByLogin($login)
 	{
-		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\ SECURITE
+		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
 		$login = mysqli_real_escape_string($this->db, $login);
 		// /!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\/!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE login='".$login."' LIMIT 1");
@@ -41,6 +41,7 @@ class UserManager
 		
 	}
 	
+
 	// UPDATE
 	public function save(User $user)
 	{
@@ -59,6 +60,7 @@ class UserManager
 		}
 		return $this->findById($id);
 	}
+
 	
 	// DELETE
 	public function remove(User $user)
@@ -67,37 +69,23 @@ class UserManager
 		mysqli_query($this->db, "DELETE from users WHERE id='".$id."' LIMIT 1");
 		return $user;
 	}
+
 	
 	// INSERT
 	public function create($login, $password1, $password2, $email, $adress, $birthdate )
 	{
 		$errors = [];
 		$user = new User($this ->db);
-		$error = $user->setLogin($login);// return
-		if ($error)
-		{
+		if (($error = $user->setLogin($_POST['login'])))
 			$errors[] = $error;
-		}
-		$error = $user->setPassword($password1);
-		if ($error)
-		{
+		if (($error = $user->initPassword($_POST['password1'], $_POST['password2'])))
 			$errors[] = $error;
-		}
-		$error = $user->setEmail($email);
-		if ($error)
-		{
+		if (($error = $user->setEmail($_POST['email'])))
 			$errors[] = $error;
-		}
-		$error = $user->setAdress($adress);
-		if ($error)
-		{
+		if (($error = $user->setAddress($_POST['address'])))
 			$errors[] = $error;
-		}
-		$error = $user->setBirthdate($birthdate);
-		if ($error)
-		{
+		if (($error = $user->setBirthdate($birthdate)))
 			$errors[] = $error;
-		}
 		
 		if (count($errors) != 0)
 		{
@@ -105,7 +93,8 @@ class UserManager
 		}
 
 		$login = mysqli_real_escape_string($this->db, $user->getLogin());
-		$hash = password_hash($password1, PASSWORD_BCRYPT, ["cost"=>11]);
+		// $hash = password_hash($password1, PASSWORD_BCRYPT, ["cost"=>11]);
+		$hash = mysqli_real_escape_string($this->db, $user->getPassword());
 		$email = mysqli_real_escape_string($this->db, $user->getEmail());
 		$adress = mysqli_real_escape_string($this->db, $user->getAdress());
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());

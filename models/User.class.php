@@ -13,21 +13,27 @@ class User
 	private $cart;
 	private $db;
 
+
+
 	public function __construct($db)
 	{
 		$this->db = $db;
 	}
 
+
 	public function getId()
 	{
 		return $this->id;
 	}
+
+
 	public function getCart()
 	{
 		$manager = new CommandManager($this->db);
 		$this->cart = $manager->findCartByUser($this);
 		return $this->cart;
 	}
+
 
 	public function getLogin()
 	{
@@ -54,7 +60,11 @@ class User
 	{
 		return $this->password;
 	}
-	public function setPassword($password)
+	public function verifPassword($password)
+	{
+		return password_verify($password, $user->password);
+	}
+	public function updatePassword($password, $old_password)
 	{
 		if (strlen($password) > 31)
 		{
@@ -64,11 +74,39 @@ class User
 		{
 			return "Mot de passe trop court (<3)";
 		}
+		else if (!$this->verifPassword($old_password))
+		{
+			return "L'ancien mot de passe est invalide";
+		}
 		else
 		{
-			$this->password = $password;
+			$this->password = password_hash($password, PASSWORD_BCRYPT, ["cost"=>11]);
 		}
 	}
+	public function initPassword($password1, $password2)
+	{
+		if (strlen($password1) > 31)
+		{
+			return "Mot de passe trop long (> 31)";
+		}
+		else if (strlen($password1) < 3)
+		{
+			return "Mot de passe trop court (< 3)";
+		}
+		else if ($password1 != $password2)
+		{
+			return "Les mots de passe ne correspondent pas";
+		}
+		else if ($this->password != null)
+		{
+			return "Vous ne pouvez pas initialiser un mot de passe deja existant";
+		}
+		else
+		{
+			$this->password = password_hash($password, PASSWORD_BCRYPT, ["cost"=>11]);
+		}
+	}
+
 
 	public function getEmail()
 	{
@@ -85,6 +123,7 @@ class User
 			return "Email non valide";
 		}
 	}
+
 
 	public function getAdress()
 	{
@@ -106,6 +145,7 @@ class User
 			$this->adress = $adress;
 		}
 	}
+
 
 	public function getBirthdate()
 	{
@@ -136,6 +176,7 @@ class User
 		}
 	}
 
+
 	public function isAdmin()
 	{
 		return $this->admin;
@@ -145,9 +186,5 @@ class User
 		if (is_bool($admin))
 		$this->admin;
 	}
-
-
-
-
 }
 ?>

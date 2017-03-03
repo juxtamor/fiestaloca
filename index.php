@@ -24,11 +24,5 @@ if (isset($_GET['page'], $access_traitement[$_GET['page']]))
 	require('apps/traitement_'.$traitement.'.php');
 }
 
-// require('apps/traitement_users.php');
-// require('apps/traitement_products.php');
-// require('apps/traitement_comments.php');
-// require('apps/traitement_categorie.php');
-// require('apps/traitement_command.php');
-
 require('apps/skel.php');
 ?>

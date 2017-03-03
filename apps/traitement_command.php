@@ -100,7 +100,10 @@ if (isset($_POST['action']))
                         }
                 }
         }
-        
+        // if ($action == "delete")
+        // {
+        //    array array_splice ( array &$input , int $offset [, int $length = 0 [, mixed $replacement = array() ]] ) 
+        // }
 }
 /*
 $product = $manager->findById($_POST['id_product']);
