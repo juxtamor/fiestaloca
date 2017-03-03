@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="page">
+    <h2><?=htmlentities($_SESSION['login'])?></h2>
+        <form method="post">
+           <div>
+            <label for="id_category">Categorie :</label>
+                <select id="id_category" name="id_category">
+                    <option value="">Choisissez une catégorie</option>
+                    <?php foreach ($list AS $categorie) : ?>
+                        <option value="<?=$categorie-> getId()?>"><?=$categorie->getCatName()?></option>
+                    <?php endforeach; ?>
+                </select>
+        </div>
+        <div>
+        	<label for="psw">Modifier le nom:</label>
+        	<input type="text" name="cat_name" placeholder="name" value="<?=$categorie->getCatName()?>">
+        </div>
+        	<div class="button_2"><button>Valider</button></div>
+
+         <div>
+        	<label for="psw">Modifier la description:</label>
+        	<input type="text" name="cat_desc" placeholder="description" value="<?=$categorie->getCatDesc()?>">
+        </div>
+        	<div class="button_2"><button>Valider</button></div>
+        </form>
+         
+	</div>
+</div>

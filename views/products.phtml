@@ -2,12 +2,18 @@
 <div class="main">
 	<div class="container">
 		<div class="row">
-		<h2>Nos produits faits au Mexique!</h2>
+		<h2><?=htmlentities($category->getCatName())?></h2>
+	<!-- 	<form>
+		<div class="comment">
+		<button type="button" class="btn btn-outline-primary"><a href="index.php?page=edit_categorie">Modifier</a></button>
+		</div>
+		</form> -->
+
 		<?php
 		require ('apps/products_elem.php');
+		require ('apps/edit_categorie.php');
 		?>
 		</div>
 	</div>
 </div>
 		
-</section>
