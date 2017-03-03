@@ -417,6 +417,14 @@ ul.footer-social li {
 .footer-align p {
   padding-top: 40px;
 }
+
+/*ERROR*/
+.error_msg{
+  font-size: 30px;
+  color: red;
+  text-align: center;
+  margin: 10px;
+}
 @media screen and (max-width: 768px) {
   .header-nav {
     position: static;
