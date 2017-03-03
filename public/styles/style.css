@@ -405,7 +405,7 @@ a:hover {
     text-align: center; /* On centre l'image dans le div */
     overflow: hidden; /* Cache les choses qui dépassent du div */
     border: 1px solid black;
-    border-radius: 100px;
+    border-radius: 20px;
     margin: 5px;
     /*float: left;*/
   }

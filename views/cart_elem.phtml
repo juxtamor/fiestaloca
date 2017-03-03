@@ -1,8 +1,14 @@
-<div class="in_cart">
-	<div class="mini">
-		<img src="<?=htmlentities($product->getImage())?>" alt="osef">
+<div class="row">
+	<div class="col-lg-6 col-sm-6">
+		<div class="in_cart">
+			<div class="mini">
+				<img src="<?=htmlentities($product->getImage())?>" alt="osef">
+			</div>
+		</div>
 	</div>
-</div>
-<div class="in_cart">
-	<p>Ref. : <?=$product->getProdName()?> | Prix : <?=$product->getPrice()?>€</p>
+	<div class="col-lg-6 col-sm-6">
+		<div>
+			<h3>Ref. : <?=$product->getProdName()?> | Prix : <?=$product->getPrice()?>€</h3>
+		</div>
+	</div>
 </div>
