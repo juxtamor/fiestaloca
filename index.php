@@ -1,5 +1,5 @@
 <?php
-var_dump($_SERVER['HTTP_REFERER']);
+//var_dump($_SERVER['HTTP_REFERER']);
 $errors=[];
 
 $db = mysqli_connect("192.168.1.79","fiestaloca","fiestaloca","fiestaloca"); //URL, Utilisateur, MdP, Base de données//
@@ -18,7 +18,7 @@ function __autoload($classname)
 }
 
 
-$access_traitement = ["login"=>"users", "register"=>"users", "create_categorie"=>"categorie", "cart"=>"command", "user"=>"users", "create_product"=>"products", "product"=>"comments"];
+$access_traitement = ["login"=>"users", "register"=>"users", "logout"=>"users", "create_categorie"=>"categorie", "cart"=>"command", "user"=>"users", "create_product"=>"products", "product"=>"comments"];
 if (isset($_GET['page'], $access_traitement[$_GET['page']]))
 {
 	$traitement = $access_traitement[$_GET['page']];
