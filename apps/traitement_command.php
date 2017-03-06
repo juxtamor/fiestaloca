@@ -112,38 +112,38 @@ if (isset($_POST['action']))
                     header('Location: index.php?page=cart');
                     exit;
                 }
-                    else
-                    {
-                        $errors[] = "Erreur interne";
-                    }        
-                }
-                catch (Exceptions $e)
+                else
                 {
-                   $errors = $e->getErrors();
-                }
+                    $errors[] = "Erreur interne";
+                }        
             }
-        }
-        if ($action == "v_order")
-        {
-            if (isset($_SESSION['id']))
+            catch (Exceptions $e)
             {
-                $manager = new OrdersManager($db);
-                $userManager = new UserManager($db);
-                $user = $userManager->findById($_SESSION['id']);
-                
-                try
-                {
-                    $cart = $user->getCart();
-                    $cart->setStatus("termine");
-                    $manager->save($cart);
-                    header('Location: index.php?page=orders');
-                    exit;
-                }
-                catch (Exceptions $e)
-                {
-                    $errors = $e->getErrors();
-                }
+                $errors = $e->getErrors();
             }
         }
     }
+    if ($action == "v_order")
+    {
+        if (isset($_SESSION['id']))
+        {
+            $manager = new OrdersManager($db);
+            $userManager = new UserManager($db);
+            $user = $userManager->findById($_SESSION['id']);
+                
+            try
+            {
+                $cart = $user->getCart();
+                $cart->setStatus("termine");
+                $manager->save($cart);
+                header('Location: index.php?page=orders');
+                exit;
+            }
+            catch (Exceptions $e)
+            {
+                $errors = $e->getErrors();
+            }
+        }
+    }
+}
 ?>
