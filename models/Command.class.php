@@ -26,7 +26,7 @@ class Command
 
 	public function getProducts()
 	{
-		if ($this->products == null)
+		if ($this->products === null)
 		{
 		$manager = new ProductManager($this->db);
 		$this->products = $manager->findByCommand($this);
@@ -35,7 +35,7 @@ class Command
 	}
 	public function addProduct(Product $product)
 	{
-		if ($this->products == null)
+		if ($this->products === null)
 		{
 			$this->getProducts();
 		}

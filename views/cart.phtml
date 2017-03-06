@@ -3,12 +3,12 @@
 
 	<div class="lastcommand">
 
-		<h2>Voici vos dernières commandes</h2>
+		<h2>Panier en cours</h2>
 		<?php require('apps/cart_elem.php'); ?>
 		<div>PRIX TOTAL : <?=$user->getCart()->getTotalPrice()?>€</div>
 		<ul>
 			
-			<li><a href="">Commande en cours</a></li>
+			<li><a href="">Suivi de commande(s)</a></li>
 			<?php require('apps/cart_elem.php'); ?>
 			<li><a href="">Historique</a></li>
 
