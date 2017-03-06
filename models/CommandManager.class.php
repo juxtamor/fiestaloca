@@ -8,8 +8,8 @@ class CommandManager
 		$this->db = $db;
 	}
 
-	// SELECT
 
+	// SELECT
 	public function findAll()
 	{
 		$list = [];
@@ -20,6 +20,7 @@ class CommandManager
 		}
 		return $list;
 	}
+
 	public function findById($id)
 	{
 		// /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
@@ -40,6 +41,7 @@ class CommandManager
 		return $command;
 		
 	}
+	
 	public function findCartByUser(User $user)
 	{
 		$id_user = intval($user->getId());
@@ -47,6 +49,8 @@ class CommandManager
 		$command = mysqli_fetch_object($res, "Command", [$this->db]);
 		return $command;
 	}
+
+
 	// UPDATE
 	public function save(Command $command)
 	{
@@ -74,6 +78,7 @@ class CommandManager
 		}
 		return $this->findById($id);
 	}
+
 	
 	// DELETE
 	public function remove(Command $command)
@@ -82,6 +87,7 @@ class CommandManager
 		mysqli_query($this->db, "DELETE from command WHERE id='".$id."' LIMIT 1");
 		return $command;
 	}
+
 
 	// INSERT
 	public function create(User $user)
