@@ -1,17 +1,14 @@
 <div class="container">
 	<h1> <?=htmlentities($_SESSION['login'])?> voici votre panier </h1>
-
 	<div class="lastcommand">
-
 		<h2>Panier en cours</h2>
 		<?php require('apps/cart_elem.php'); ?>
 		<div>PRIX TOTAL : <?=$user->getCart()->getTotalPrice()?>€</div>
+
 		<ul>
-			
 			<li><a href="">Suivi de commande(s)</a></li>
 			<?php require('apps/cart_elem.php'); ?>
 			<li><a href="">Historique</a></li>
-
 		</ul>
 
 	</div>
