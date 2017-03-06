@@ -62,7 +62,7 @@ class User
 	}
 	public function verifPassword($password)
 	{
-		return password_verify($password, $user->password);
+		return password_verify($password, $this->password);
 	}
 	public function updatePassword($password, $old_password)
 	{

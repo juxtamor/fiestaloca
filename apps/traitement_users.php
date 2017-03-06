@@ -11,13 +11,13 @@ if (isset($_GET['page']) && $_GET['page'] == "logout")
 	header('Location: index.php');
 	exit;
 }
-	if (isset($_POST['action']))
+if (isset($_POST['action']))
+{
+	$action = $_POST['action'];
+	if ($action == "register")
 	{
-		$action = $_POST['action'];
-		if ($action == "register")
+		if (isset($_POST['login'], $_POST['password1'], $_POST['password2'], $_POST['email'],$_POST['adress'], $_POST['birthdate']))
 		{
-			if (isset($_POST['login'], $_POST['password1'], $_POST['password2'], $_POST['email'],$_POST['adress'], $_POST['birthdate']))
-			{
 				
 			$manager = new UserManager($db);
 			try
@@ -59,33 +59,35 @@ if (isset($_GET['page']) && $_GET['page'] == "logout")
 			$manager = new UserManager($db);
 			try
 			{
-					$user = $manager->findByLogin($_POST['login']);
-					if ($user)
+				$user = $manager->findByLogin($_POST['login']);
+				if ($user)
+				{
+					//if (password_verify($_POST['password'], $user->getPassword()))
+					if ($user->verifPassword($_POST['password']))
 					{
-						//if (password_verify($_POST['password'], $user->getPassword()))
-						if ($user->verifPassword($_POST['password']))
-						{
-							$_SESSION['id'] = $user->getId();
-							$_SESSION['login'] = $user->getLogin();
-							$_SESSION['admin'] = $user->isAdmin();
-						
-							header('Location: index.php');
-							exit;
-						}
+						$_SESSION['id'] = $user->getId();
+						$_SESSION['login'] = $user->getLogin();
+						$_SESSION['admin'] = $user->isAdmin();
+							
+						if (isset($_POST['ref']))
+							header('Location: '.$_POST['ref']);
 						else
-						{
-							$errors[] = "Mot de passe incorrect";
-						}
+							header('Location: index.php');
+						exit;
 					}
 					else
 					{
-						$errors[] = "Login inconnu";
+						$errors[] = "Mot de passe incorrect";
 					}
 				}
-				catch (Exceptions $e)
+				else
 				{
-					$errors = $e->getErrors();
+					$errors[] = "Login inconnu";
 				}
+			}
+			catch (Exceptions $e)
+			{
+				$errors = $e->getErrors();
 			}
 		}
 	}
@@ -136,4 +138,5 @@ if (isset($_GET['page']) && $_GET['page'] == "logout")
 			}
 		}
 	}
+}
 ?>
