@@ -31,8 +31,8 @@ class CommentManager
 		// 	$list[] = $comment;
 		// }
 		// return $list;
-		$request = $this->db->query("SELECT * FROM comments WHERE id_prod=? ORDER BY date DESC");
-		$request->execute([$products->getId()]);
+		$request = $this->db->prepare("SELECT * FROM comments WHERE id_prod=? ORDER BY date DESC");
+		$request->execute([$prod->getId()]);
 		$list = $request->fetchAll(PDO::FETCH_CLASS, "Comment", [$this->db]);
 		return $list;
 	}
