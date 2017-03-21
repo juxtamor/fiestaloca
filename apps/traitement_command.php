@@ -36,7 +36,6 @@ if (isset($_POST['action']))
                     }
                     // while ($quantity)
                     $manager->save($cart);
-                    $cart->addProduct($product);
                     header('Location: index.php?page=cart');
                     exit;
                 }

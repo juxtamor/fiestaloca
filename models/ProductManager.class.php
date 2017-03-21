@@ -35,7 +35,7 @@ class ProductManager
 		// 	$list[] = $product;
 		// }
 		// return $list;
-		$request = $this->db->prepare("SELECT products.* FROM products LEFT JOIN link_command_products ON link_orders_products.id_products=products.id WHERE link_commands_products.id_command=?");
+		$request = $this->db->prepare("SELECT products.* FROM products LEFT JOIN link_command_products ON link_command_products.id_products=products.id WHERE link_command_products.id_command=?");
 		$request->execute([$command->getId()]);
 		// while($products = mysqli_fetch_object($res, "Products", [$this->db]))
 		// {
@@ -79,7 +79,7 @@ class ProductManager
 		// $list = [];
 		// $res = mysqli_query($this->db, "SELECT products.*, COUNT(products.id) AS nbr FROM products LEFT JOIN link_orders_products ON link_orders_products.id_products=products.id WHERE link_orders_products.id_orders='".$id."' GROUP BY products.id");
 		$request = $this->db->prepare("SELECT products.*, COUNT(products.id) AS nbr FROM products LEFT JOIN link_command_products ON link_command_products.id_products=products.id WHERE link_command_products.id_command=? GROUP BY products.id");
-		$request->execute([$order->getId()]);
+		$request->execute([$command->getId()]);
 		// while($products = mysqli_fetch_object($res, "Products", [$this->db]))
 		// {
 		// 	$list[] = $products;
@@ -123,8 +123,8 @@ class ProductManager
 		// }
 		// return $this->findById($id);
 		$request = $this->db->prepare("UPDATE products SET prod_name=?, prod_desc=?, stock=?, price=?, id_category=? WHERE id=? LIMIT 1");
-		$request->execute([$products->getId(), $products->getProdName(), $products->getProdDesc(), $products->getStock(), $products->getPrice(), $products->getIdCategory()->getId()]);
-		return $this->findById($products->getId());
+		$request->execute([$product->getId(), $product->getProdName(), $product->getProdDesc(), $product->getStock(), $product->getPrice(), $product->getCategory()->getId()]);
+		return $this->findById($product->getId());
 	}
 	
 	// DELETE

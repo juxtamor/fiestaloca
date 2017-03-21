@@ -82,7 +82,7 @@ class CommandManager
 		// $command = mysqli_fetch_object($res, "Command", [$this->db]);
 		// return $command;
 		$request = $this->db->prepare("SELECT * FROM command WHERE id_user=? AND status='Panier'");
-		$request->execute([$status]);
+		$request->execute([$user->getId()]);
 		$cart = $request->fetchObject("Command", [$this->db]);
 		return $cart;
 	}
@@ -91,6 +91,7 @@ class CommandManager
 	// UPDATE
 	public function save(Command $command)
 	{
+		// var_dump($command);
 		// $id = intval($command->getId());
 		// $products = $command->getProducts();
 		// $productManager = new ProductManager($this->db);
@@ -117,11 +118,15 @@ class CommandManager
 
 		$id = intval($command->getId());
 		$products = $command->getProducts();
+		
+
 		$productManager = new ProductManager($this->db);
 		$old_list = $productManager->findNbrByCommand($command);
+// 		var_dump($old_list);		
+// die();
 		foreach ($old_list AS $product)
 		{
-			$product->setQuantity($product->getStock() + $product->nbr);
+			$product->setStock($product->getStock() + $product->nbr);
 			$productManager->save($product);
 		}
 		// mysqli_query($this->db, "DELETE FROM link_command_products WHERE id_command='".$id."'");
@@ -143,8 +148,9 @@ class CommandManager
 		// $price = floatval($orders->getPrice());
 		// $date = mysqli_real_escape_string($this->db, $orders->getDate());
 		// mysqli_query($this->db, "UPDATE orders SET id_users='".$id_users."', status='".$status."', price='".$price."', date='".$date."' WHERE id='".$id."'");
-		$request = $this->db->prepare("UPDATE orders SET id_user=?, status=?, price=?, date=? WHERE id=?");
-		$request->execute([$command->getUser()->getId(), $command->getStatus(), $command->getPrice(), $command->getDate(), $id]);
+		$request = $this->db->prepare("UPDATE command SET id_user=?, status=?, total_price=? WHERE id=?");
+		
+	$request->execute([$command->getUser()->getId(), $command->getStatus(), $command->getTotalPrice(), $id]);
 		return $this->findById($id);
 	}
 
@@ -186,7 +192,7 @@ class CommandManager
 		// $id = mysqli_insert_id($this->db);
 		// return $this->findById($id);
 		$request = $this->db->prepare("INSERT INTO command (id_user) VALUES(?)");
-		$res = $request->execute([$command->getIdUser()->getId()]);
+		$res = $request->execute([$command->getUser()->getId()]);
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);

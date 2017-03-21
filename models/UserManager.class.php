@@ -72,8 +72,8 @@ class UserManager
 		// 	throw new Exceptions(["Erreur interne"]);
 		// }
 		// return $this->findById($id);
-		$request = $this->db->prepare("UPDATE users SET login=?, email=?, password=?, address=?, birthdate=?, admin=? WHERE id=? LIMIT 1");
-		$res = $request->execute([$user->getId(), $user->getEmail(), $user->getPassword(), $user->getLogin(), $user->getAddress(), $user->getBirthdate(), (boolean)$user->isAdmin()]);
+		$request = $this->db->prepare("UPDATE users SET login=?, email=?, password=?, adress=?, birthdate=?, admin=? WHERE id=? LIMIT 1");
+		$res = $request->execute([$user->getId(), $user->getEmail(), $user->getPassword(), $user->getLogin(), $user->getAdress(), $user->getBirthdate(), (boolean)$user->isAdmin()]);
 		if (!$res)
 			throw new Exceptions(["Erreur interne"]);
 		return $this->findById($user->getId());
@@ -103,7 +103,7 @@ class UserManager
 			$errors[] = $error;
 		if (($error = $user->setEmail($_POST['email'])))
 			$errors[] = $error;
-		if (($error = $user->setAddress($_POST['address'])))
+		if (($error = $user->setAdress($_POST['adress'])))
 			$errors[] = $error;
 		if (($error = $user->setBirthdate($birthdate)))
 			$errors[] = $error;
@@ -127,7 +127,7 @@ class UserManager
 		// $id = mysqli_insert_id($this->db);// last_insert_id
 		// return $this->findById($id);
 		$request = $this->db->prepare("INSERT INTO users (login, password, email, adress, birthdate) VALUES(?, ?, ?, ?, ?)");
-		$res = $request->execute([$user->getLogin(), $user->getPassword(), $user->getEmail(), $user->getAddress(), $user->getBirthdate()]);
+		$res = $request->execute([$user->getLogin(), $user->getPassword(), $user->getEmail(), $user->getAdress(), $user->getBirthdate()]);
 		if (!$res)
 			throw new Exceptions(["Erreur interne"]);
 		// $id = mysqli_insert_id($this->db);

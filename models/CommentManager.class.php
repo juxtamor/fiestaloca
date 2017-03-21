@@ -17,7 +17,7 @@ class CommentManager
 		$request = $this->db->prepare("SELECT * FROM comments WHERE id=? LIMIT 1");
 		$request->execute([$id]);
 		$comment = $request->fetchObject("Comment",[$this->db]);
-		return $ccomment;
+		return $comment;
 	}
 	
 
@@ -109,7 +109,7 @@ class CommentManager
 		// $id = mysqli_insert_id($this->db);
 		// return $this->findById($id);
 		$request = $this->db->prepare("INSERT INTO comments (content, id_author, id_prod, note) VALUES(?, ?,?,?)");
-		$res = $request->execute([$comment->getContent(), $comment->getIdAuthor()->getId(), $comment->getIdProd()->getId(),$comment->getNote()]);
+		$res = $request->execute([$comment->getContent(), $comment->getAuthor()->getId(), $comment->getProd()->getId(),$comment->getNote()]);
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
